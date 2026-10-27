@@ -378,6 +378,48 @@ html.noir-app body{background:radial-gradient(ellipse at 95% 3%,#74519b20,transp
 .noir-app #input-modal>div{background:var(--na-panel2)!important;border-color:var(--na-line)!important;color:var(--na-text)!important}
 .noir-app.dark .lt-card,.noir-app.dark .page-content>.bg-luxe-card{border-color:var(--na-line)!important;background:linear-gradient(140deg,var(--na-panel),var(--na-panel2))!important}
 
+</style><style id="life-header-completion-design">
+/* A greeting that settles into the identity; tactile completion controls. */
+html.noir-app .ng-header{display:grid!important;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center!important;gap:10px!important;min-height:77px;transition:min-height .65s ease;position:relative}
+html.noir-app .ng-header.ng-settled{min-height:51px}
+html.noir-app .ng-header>.ng-avatar{height:42px!important;width:42px!important;display:grid;place-items:center;flex-shrink:0;border:1px solid #d4b38560;border-radius:50%;background:radial-gradient(circle at 15% 10%,#d3a978,#604a6b 90%);color:#f7e2bd;box-shadow:0 0 18px #9973be28;font-size:17px;font-weight:700;transition:opacity .6s,transform .7s}
+html.noir-app .ng-header.ng-settled>.ng-avatar{opacity:0;transform:scale(.55) translateX(-8px);pointer-events:none}
+html.noir-app .ng-identity{min-width:0;text-align:center!important;cursor:pointer;outline-offset:5px;border-radius:10px;color:var(--na-text)}
+html.noir-app .ng-identity:focus-visible{outline:2px solid var(--na-violet)}
+html.noir-app .ng-identity .ng-greeting{display:block!important;max-height:32px;opacity:1;margin-bottom:4px;overflow:hidden;font-size:21px!important;line-height:1.3!important;font-weight:600!important;letter-spacing:-.5px!important;color:var(--na-gold-bright)!important;transition:opacity .45s,max-height .65s,margin .65s,transform .65s}
+html.noir-app .ng-header .ng-identity h1,html.noir-app .ng-side-profile .ng-identity h2{font-family:Manrope,Arial,sans-serif!important;font-size:24px!important;font-weight:800!important;letter-spacing:-.9px!important;line-height:1.25!important;white-space:normal;overflow-wrap:anywhere;margin:0!important;background:none!important;color:var(--na-text)!important;text-align:center!important;transition:font-size .65s}
+html.noir-app .ng-header.ng-settled .ng-identity h1{font-size:25px!important}
+html.noir-app .ng-settled .ng-identity .ng-greeting{opacity:0;max-height:0;margin-bottom:0;transform:translateY(-8px)}
+html.noir-app .ng-header>button{width:42px;height:42px;min-height:42px;padding:0!important;justify-self:end;border-radius:50%!important;display:grid;place-items:center}
+html.noir-app aside>div:first-child>.ng-side-profile{display:grid!important;grid-template-columns:40px minmax(0,1fr);gap:9px!important;min-height:85px;margin-bottom:32px!important;transition:grid-template-columns .65s,min-height .65s,gap .65s}
+html.noir-app aside>div:first-child>.ng-side-profile.ng-settled{grid-template-columns:0px minmax(0,1fr);gap:0!important;min-height:55px}
+html.noir-app .ng-side-profile>.ng-avatar{height:38px!important;width:38px!important;opacity:1;transition:opacity .5s,transform .65s}
+html.noir-app .ng-side-profile.ng-settled>.ng-avatar{opacity:0;transform:scale(.5);pointer-events:none}
+html.noir-app .ng-side-profile .ng-identity h2{font-size:19px!important;letter-spacing:-.7px!important}
+html.noir-app .ng-side-profile .ng-greeting{font-size:17px!important}
+html.noir-app .na-hero #na-welcome,html.noir-app .na-hero #na-welcome+br{display:none!important}
+html.noir-app .ng-completion{position:relative;display:inline-grid;place-items:center;width:46px;height:46px;flex:0 0 46px;vertical-align:middle;isolation:isolate}
+html.noir-app .ng-completion>input[type=checkbox]{position:absolute!important;inset:0!important;opacity:0!important;appearance:none!important;-webkit-appearance:none!important;width:46px!important;height:46px!important;min-height:46px!important;max-height:46px!important;margin:0!important;padding:0!important;cursor:pointer;z-index:2;outline:none!important;border:0!important;box-shadow:none!important;transform:none!important}
+html.noir-app .ng-completion>.ng-control{display:grid;place-items:center;width:33px;height:33px;border-radius:50%;border:1px solid #b397cc8c;background:radial-gradient(circle at 30% 15%,#c6afe51c,#9d77c204);box-shadow:inset 0 1px 0 #ffffff0d,0 0 0 4px #b699d807;color:var(--na-gold-bright);pointer-events:none;transition:background .25s,border-color .25s,box-shadow .25s,transform .25s}
+.ng-control svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:25;stroke-dashoffset:25;opacity:0;transition:stroke-dashoffset .35s ease,opacity .2s}
+html.noir-app .ng-completion>input:checked+.ng-control{background:linear-gradient(140deg,#ead2a7,#bf955f)!important;border-color:#f3ddba!important;box-shadow:0 0 0 4px #d2b68013,0 0 19px #d7b27b2b!important;color:#38283b!important;transform:scale(1.025)}
+.ng-completion>input:checked+.ng-control svg{stroke-dashoffset:0;opacity:1}
+html.noir-app .ng-completion>input:focus-visible+.ng-control{outline:2px solid var(--na-violet);outline-offset:5px}
+html.noir-app .ng-completion:hover>.ng-control{border-color:var(--na-gold-bright);box-shadow:0 0 0 5px #cbb0e412,0 0 22px #af8cdd25;transform:scale(1.08)}
+html.noir-app .ng-completion>input:disabled{cursor:default}
+html.noir-app .ng-completion>input:disabled+.ng-control{opacity:.5}
+html.noir-app .ng-activity-row{background:transparent!important;border:0!important;border-bottom:1px solid var(--na-line)!important;border-radius:0!important;box-shadow:none!important;min-height:75px;padding:15px 0!important;gap:13px;transition:background .3s,color .3s}
+html.noir-app #workout-exercises-list>.ng-activity-row{display:grid!important;grid-template-columns:23px minmax(0,1fr) 46px;align-items:center;gap:12px}
+html.noir-app .ng-activity-row:last-child{border-bottom:0!important}
+html.noir-app .ng-activity-row>.ng-activity-title{font-size:14px!important;line-height:1.65!important;color:var(--na-text);font-weight:500!important}
+html.noir-app .ng-exercise-index{align-self:center;font-size:10px;letter-spacing:1px;color:var(--na-violet);font-variant-numeric:tabular-nums}
+html.noir-app .ng-activity-row.ng-done>.ng-activity-title{color:var(--na-muted)!important}
+html.noir-app #workout-exercises-list{margin-top:20px!important}
+html.noir-app #workout-progress-badge{white-space:nowrap;flex-shrink:0;font-size:10px;line-height:1.5;padding:8px 11px;color:var(--na-gold-bright)!important;background:#c9a87614!important;border:1px solid var(--na-line);font-weight:600}
+html.noir-app #workout-focus-title{font-size:20px!important;line-height:1.35!important}
+@media(max-width:350px){html.noir-app .ng-header{gap:5px!important;grid-template-columns:40px minmax(0,1fr) 40px}html.noir-app .ng-header .ng-identity h1{font-size:21px!important}html.noir-app .ng-header.ng-settled .ng-identity h1{font-size:22px!important}html.noir-app .ng-identity .ng-greeting{font-size:19px!important}html.noir-app #workout-focus-title{font-size:18px!important}html.noir-app .ng-activity-row>.ng-activity-title{font-size:13px!important}html.noir-app #workout-exercises-list>.ng-activity-row{grid-template-columns:17px minmax(0,1fr) 46px;gap:7px}}
+@media(prefers-reduced-motion:reduce){html.noir-app .ng-header,html.noir-app .ng-header *,html.noir-app .ng-side-profile,html.noir-app .ng-side-profile *,html.noir-app .ng-completion *{transition:none!important}}
+
 </style></head>
 <body class="bg-luxe-bg dark:bg-luxe-darkBg text-luxe-text dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row">
 
@@ -1589,6 +1631,24 @@ window.addEventListener('load',()=>{
  $('na-focus').onclick=openTrailFocus;$('na-management').onclick=()=>switchTab('trabalho');$('na-faith').onclick=()=>{switchTab('espiritual');$('lt-today-reading').click()};$('na-export').onclick=()=>exportTrail();journey.addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(!b)return;if(b.dataset.tab==='care')personalCare();else{switchTab(b.dataset.tab);if(b.dataset.tab==='espiritual')$('lt-today-reading').click()}});
  const originalSave=saveState;saveState=function(){originalSave();updateNoir()};const sources=['overall-progress-text','lt-bible-progress','lt-manager-history','trail-days'];let pending=false;const observer=new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;updateNoir()})});sources.forEach(id=>{if($(id))observer.observe($(id),{subtree:true,childList:true,characterData:true})});
  updateNoir();setInterval(updateNoir,60000);
+});
+})();
+
+</script><script id="life-header-completion-app">
+(()=>{
+'use strict';
+let greetingTimer;
+const headers=[];
+const salutation=()=>{const h=new Date().getHours();return h>=5&&h<12?'Bom dia!':h>=12&&h<18?'Boa tarde!':'Boa noite!'};
+function showGreeting(){clearTimeout(greetingTimer);headers.forEach(h=>{h.querySelector('.ng-greeting').textContent=salutation();h.classList.remove('ng-settled')});greetingTimer=setTimeout(()=>headers.forEach(h=>h.classList.add('ng-settled')),4200)}
+function makeHeader(root,mobile){if(!root)return;const name=root.querySelector(mobile?'h1':'h2'),avatar=mobile?root.firstElementChild.firstElementChild:root.firstElementChild;if(!name||!avatar)return;const theme=mobile?root.lastElementChild:null;const identity=name.parentElement;identity.replaceChildren(name);const greeting=document.createElement('span');greeting.className='ng-greeting';greeting.textContent=salutation();greeting.setAttribute('aria-hidden','true');identity.prepend(greeting);identity.className='ng-identity';identity.setAttribute('role','button');identity.setAttribute('tabindex','0');identity.setAttribute('aria-label','Repetir saudação');identity.addEventListener('click',showGreeting);identity.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showGreeting()}});avatar.classList.add('ng-avatar');avatar.setAttribute('aria-hidden','true');root.replaceChildren(avatar,identity,...(theme?[theme]:[]));root.classList.add(mobile?'ng-header':'ng-side-profile');headers.push(root)}
+function refreshControls(){document.querySelectorAll('input.custom-checkbox,#lt-faith-tasks input[type=checkbox]').forEach(input=>{if(input.parentElement.classList.contains('ng-completion'))return;const row=input.closest('#workout-exercises-list>div,#tasks-container>div,#habits-list>div,#prayers-list>div,.lt-daily-task');const label=row?.querySelector('span:not(.ng-completion)')?.textContent||row?.textContent||'Atividade';if(!input.hasAttribute('aria-label'))input.setAttribute('aria-label','Concluir: '+label.trim());const wrap=document.createElement('span');wrap.className='ng-completion';input.replaceWith(wrap);wrap.append(input);const visual=document.createElement('span');visual.className='ng-control';visual.setAttribute('aria-hidden','true');visual.innerHTML='<svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg>';wrap.append(visual)});
+ ['workout-exercises-list','tasks-container','habits-list','prayers-list'].forEach(id=>{const holder=document.getElementById(id);if(!holder)return;[...holder.children].forEach((row,i)=>{const input=row.querySelector('input[type=checkbox]');if(!input)return;row.classList.add('ng-activity-row');row.classList.toggle('ng-done',input.checked);const title=row.querySelector(':scope>span:not(.ng-completion):not(.ng-exercise-index)');title?.classList.add('ng-activity-title');if(id==='workout-exercises-list'&&!row.querySelector('.ng-exercise-index')){const index=document.createElement('span');index.className='ng-exercise-index';index.textContent=String(i+1).padStart(2,'0');index.setAttribute('aria-hidden','true');row.prepend(index)}})});
+}
+window.addEventListener('load',()=>{
+ makeHeader(document.querySelector('main>div.md\\:hidden'),true);
+ makeHeader(document.querySelector('aside>div:first-child>div:first-child'),false);
+ refreshControls();let queued=false;const observer=new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;refreshControls()})});['workout-exercises-list','tasks-container','habits-list','prayers-list','lt-faith-tasks'].forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el,{childList:true,subtree:true})});document.addEventListener('change',e=>{if(e.target.matches('input.custom-checkbox'))refreshControls()});showGreeting();window.addEventListener('pageshow',e=>{if(e.persisted)showGreeting()});
 });
 })();
 
