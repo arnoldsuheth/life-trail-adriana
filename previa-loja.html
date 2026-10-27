@@ -35,6 +35,29 @@ nav.fixed{background:#fff3efe0!important;backdrop-filter:blur(25px);border-top:1
 .dark nav.fixed{background:#342435ed!important}
 @media(max-width:600px){.daily-word{padding:23px 20px}.daily-message{font-size:21px}.daily-actions{gap:10px}.daily-actions .glass-link{width:100%}.glass-shop{padding:20px!important}.glass-shop .glass-link{width:100%}.trail-title{font-size:24px}#page-home>div:first-child h1{font-size:35px!important}.daily-word:after{right:-90px}.themes{gap:8px}.hero h1{font-size:36px}}
 @media(prefers-reduced-motion:reduce){button,.trail-btn,.glass-link{transition:none!important;transform:none!important}}
+</style><style id="atelier-interactions">
+button,.trail-btn,.glass-link{overflow:hidden;isolation:isolate;--shine-x:50%;--shine-y:50%;-webkit-tap-highlight-color:transparent}
+button::before,.glass-link::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(circle at var(--shine-x) var(--shine-y),#fff9,transparent 65%);opacity:0;transition:opacity .25s;z-index:-1}
+button::after,.glass-link::after{content:"";position:absolute;top:-80%;left:-80%;width:45%;height:260%;background:linear-gradient(90deg,transparent,#ffffff65,transparent);transform:rotate(25deg);pointer-events:none;opacity:0}
+button:hover::before,button:focus-visible::before,.glass-link:hover::before,.glass-link:focus-visible::before{opacity:.6}
+button:hover::after,.glass-link:hover::after{animation:atelier-sweep .8s ease-out}
+button:active,.glass-link:active{box-shadow:inset 0 2px 8px #79365330,0 2px 8px #79365320!important}
+@keyframes atelier-sweep{0%{left:-80%;opacity:0}20%{opacity:.8}100%{left:140%;opacity:0}}
+.atelier-icon{width:21px;height:21px;display:inline-block;vertical-align:middle;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s,filter .3s}
+button:hover .atelier-icon,.glass-link:hover .atelier-icon{transform:translateY(-2px);filter:drop-shadow(0 3px 4px #a86c8870)}
+.trail-moods{gap:13px!important;align-items:stretch!important}
+.trail-moods button{width:auto!important;height:auto!important;flex:1!important;min-width:0!important;min-height:107px!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:11px;border-radius:22px!important;padding:15px 5px!important;background:linear-gradient(145deg,#fffaf9b0,#ecc1d155)!important;border:1px solid #fff!important;box-shadow:inset 0 1px 2px #fff,0 8px 18px #85405f14!important}
+.trail-moods .atelier-icon{width:29px;height:29px;stroke-width:1.4;transition:transform .35s}
+.trail-moods small{font-size:11px!important;margin:0!important;color:inherit!important;line-height:1.3}
+.trail-moods button[aria-pressed=true]{background:linear-gradient(135deg,#ab6b89de,#874564ee)!important;color:white!important;box-shadow:inset 0 1px 1px #fff8,0 9px 23px #85405f38!important;border-color:#ffffffbd!important;transform:translateY(-3px)}
+.trail-moods button[aria-pressed=true] .atelier-icon{filter:drop-shadow(0 0 7px #ffffff70)}
+.trail-moods button:hover .atelier-icon{transform:rotate(-8deg) translateY(-3px)}
+.atelier-ripple{position:absolute;border-radius:50%;width:22px;height:22px;background:#fff8;pointer-events:none;transform:translate(-50%,-50%) scale(0);animation:atelier-ripple .65s ease-out;z-index:2}
+@keyframes atelier-ripple{to{transform:translate(-50%,-50%) scale(15);opacity:0}}
+.glass-link,.daily-actions button{gap:9px}
+.dark .trail-moods button{background:linear-gradient(140deg,#85547170,#56384990)!important}
+.dark .trail-moods button[aria-pressed=true]{background:linear-gradient(140deg,#b77c9a,#905570)!important}
+@media(prefers-reduced-motion:reduce){button::after,.glass-link::after,.atelier-ripple{animation:none!important;display:none}.atelier-icon{transition:none!important}button:hover .atelier-icon,.glass-link:hover .atelier-icon{transform:none!important}}
 </style></head><body><div class="wrap"><header class="top"><div><div class="brand">LIFE TRAIL</div><small>Adriana Feu · gestão com leveza</small></div><span class="badge">PRÉVIA PARA APROVAÇÃO</span></header><section class="hero"><div class="kicker">Trabalho · vida financeira · tempo com Deus</div><h1>Uma visão clara.<br>Um dia mais tranquilo.</h1><p>Os resultados da sua equipe, no seu ritmo.</p><div class="themes" aria-label="Escolher tema"><button data-theme="rose" aria-pressed="true">1 · Rosé Atelier</button><button data-theme="lavanda" aria-pressed="false">2 · Lavanda Aura</button><button data-theme="champanhe" aria-pressed="false">3 · Champanhe Botânico</button></div></section>
 <div class="notice">Esta prévia usa <b>dados demonstrativos</b>. As metas de PA 3,25 e VVPA R$ 250,00 seguem as imagens; as metas de vendas são exemplos editáveis. Nenhum resultado real da loja foi importado.</div>
 <nav class="tabs" aria-label="Gestão da loja"><button data-tab="painel" aria-selected="true">Visão geral</button><button data-tab="lancar" aria-selected="false">+ Lançamento rápido</button><button data-tab="historico" aria-selected="false">Histórico</button><button data-tab="metas" aria-selected="false">Metas</button></nav>
@@ -114,6 +137,40 @@ const shop=document.createElement('div');shop.className='trail-panel glass-shop'
 if(location.hash==='#tempo-com-deus')switchTab('espiritual');
 }else{document.querySelector('.hero').after(host);}
 paint();setInterval(paint,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)paint()});
+});
+})();
+</script><script id="atelier-icons-effects">
+(()=>{
+const shapes={
+moon:'<path d="M20 14a8 8 0 0 1-10-10 8 8 0 1 0 10 10Z"/>',
+leaf:'<path d="M20 4C9 3 3 7 5 14c2 7 13 5 15-10Z"/><path d="M4 21 16 9"/>',
+sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>',
+heart:'<path d="M20 5c-3-3-7-1-8 1-1-2-5-4-8-1-4 4 1 9 8 15 7-6 12-11 8-15Z"/>',
+calendar:'<rect x="4" y="5" width="16" height="16" rx="4"/><path d="M8 3v4m8-4v4M4 10h16m-11 5 2 2 4-4"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
+book:'<path d="M12 6c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v14"/>',
+arrow:'<path d="M5 12h14m-6-6 6 6-6 6"/>',
+flower:'<path d="M12 12c-9-2-8-10-3-8 2-6 8-3 6 2 6-2 8 5 2 7 4 5-2 9-5 4-4 5-10 0-5-4"/><circle cx="12" cy="11" r="2"/><path d="M12 17v5"/>',
+bag:'<rect x="4" y="7" width="16" height="14" rx="4"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/>',
+fitness:'<path d="m4 8 4-4m-5 9 10-10M11 21l10-10m-5 9 4-4M7 7l10 10"/>',
+wallet:'<rect x="3" y="5" width="18" height="15" rx="4"/><path d="M3 9h18m-5 4h5v4h-5z"/>',
+home:'<path d="m3 11 9-8 9 8M5 10v11h5v-7h4v7h5V10"/>',
+spark:'<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/>'
+};
+function icon(name){return '<svg class="atelier-icon" viewBox="0 0 24 24" aria-hidden="true">'+(shapes[name]||shapes.spark)+'</svg>'}
+function beautify(){
+ document.querySelectorAll('.trail-moods button').forEach(b=>{if(b.dataset.atelierIcon)return;const mood=b.dataset.mood;const label=b.querySelector('small')?.textContent||b.textContent;b.innerHTML=icon(mood==='cansada'?'moon':mood==='tranquila'?'leaf':'sun')+'<small>'+label+'</small>';b.dataset.atelierIcon='1';b.setAttribute('aria-label',label)});
+ const root=document.querySelector('main')||document.querySelector('.wrap');if(!root)return;
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const nodes=[];let n;while(n=walker.nextNode()){if(n.parentElement.closest('script,style,svg,textarea,select,option'))continue;nodes.push(n)}
+ const emojis=/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\uFE0F\u200D]/gu;
+ nodes.forEach(n=>{if(emojis.test(n.nodeValue)){emojis.lastIndex=0;n.nodeValue=n.nodeValue.replace(emojis,'').replace(/ {2,}/g,' ')}emojis.lastIndex=0});
+ document.querySelectorAll('.daily-actions button,.daily-actions a,.glass-shop a').forEach(b=>{if(b.querySelector('svg'))return;let text=b.textContent.replace(/[♡✧＋↗]/g,'').trim();const type=text.includes('Deus')?'book':text.includes('Planejar')?'calendar':text.includes('loja')?'bag':'plus';b.innerHTML=icon(type)+'<span>'+text+'</span>'});
+ document.querySelectorAll('h1,h2,h3').forEach(h=>{if(h.querySelector('svg,i')||h.id==='greeting-title')return;const t=h.textContent;const type=t.includes('Trabalho')?'bag':t.includes('Treino')?'fitness':t.includes('Financeira')?'wallet':t.includes('Espiritual')?'book':null;if(type)h.insertAdjacentHTML('afterbegin',icon(type)+' ')});
+ document.querySelectorAll('button').forEach(b=>{if(b.children.length)return;const t=b.textContent.trim();if(t==='+'||t==='＋')b.innerHTML=icon('plus');});
+}
+window.addEventListener('load',()=>{beautify();let pending=false;new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;beautify()})}).observe(document.body,{childList:true,subtree:true});
+document.addEventListener('pointermove',e=>{const b=e.target.closest('button,.glass-link');if(!b)return;const r=b.getBoundingClientRect();b.style.setProperty('--shine-x',(e.clientX-r.left)+'px');b.style.setProperty('--shine-y',(e.clientY-r.top)+'px')});
+document.addEventListener('click',e=>{const b=e.target.closest('button,.glass-link');if(!b||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const r=b.getBoundingClientRect(),dot=document.createElement('span');dot.className='atelier-ripple';dot.style.left=(e.detail?e.clientX-r.left:r.width/2)+'px';dot.style.top=(e.detail?e.clientY-r.top:r.height/2)+'px';b.append(dot);setTimeout(()=>dot.remove(),700)});
 });
 })();
 </script></body></html>
