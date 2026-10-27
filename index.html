@@ -215,7 +215,50 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline-color:#b
 @media(min-width:768px){aside{width:245px!important}.page-content{padding-bottom:25px}#page-home>div:first-child{padding:35px 38px!important}.trail-panel:hover{box-shadow:0 12px 32px #74445c16}}
 @media(max-width:600px){main{padding-top:16px!important}#page-home>div:first-child{padding:27px 24px!important;min-height:265px;border-radius:26px!important}#page-home>div:first-child h1{font-size:42px;max-width:280px}.trail-title{font-size:28px}.trail-panel{padding:22px}.trail-grid{gap:18px}.trail-dot{width:30px;height:30px}.trail-days{gap:4px}.trail-moods button{padding:14px 4px}#trail-dialog{padding:23px}nav.fixed span{font-size:9px}}
 </style>
-</head>
+
+<style id="rose-atelier-approved">
+:root{--rose-wine:#84445f;--rose-blush:#f7e1df;--rose-ink:#562e42}
+body{background:radial-gradient(ellipse at 0% 30%,#f1c5d077,transparent 48%),radial-gradient(ellipse at 100% 70%,#edc9b650,transparent 45%),#fbf1ed!important;color:#562e42!important}
+main{position:relative}
+#page-home>div:first-child{background:radial-gradient(ellipse at 0% 0%,#b66f8a77,transparent 53%),radial-gradient(ellipse at 100% 100%,#e4b69888,transparent 60%),linear-gradient(130deg,#f4d7da,#fbe9df 70%,#f2d2d5)!important;color:#643047!important;box-shadow:0 15px 45px #8b52631a!important;border-color:#fff9!important}
+#page-home>div:first-child h1{color:#642d43!important}
+#page-home>div:first-child p{color:#835368!important;font-size:13px}
+#page-home>div:first-child::before{border-color:#b67c5260;width:220px;height:390px;right:-155px;top:25px;transform:rotate(28deg)}
+#page-home>div:first-child::after{border-color:#b67c5235;width:260px;height:370px;right:-135px;transform:rotate(44deg)}
+.trail-mark{color:#81465e;letter-spacing:3.2px}
+.trail-mark span{border-color:#b08a62}
+#current-date-badge{background:#fff5!important;border-color:#ffffffaa!important;color:#89546b}
+.rose-progress{display:flex;align-items:center;gap:28px;padding:26px!important;border-radius:26px!important;background:linear-gradient(120deg,#fffaf9b8,#ffece6bb)!important;border:1px solid #fff!important}
+.rose-ring{--progress:0%;flex:0 0 125px;width:125px;height:125px;border-radius:50%;background:conic-gradient(from 200deg,#9b566f var(--progress),#eed1d3 0);padding:9px;box-shadow:0 7px 25px #9a5c7010;transform:rotate(-0deg)}
+.rose-ring>div{height:100%;border-radius:50%;background:#fbefec;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:inset 0 0 18px #b7808b10}
+.rose-ring strong{font-family:"Cormorant Garamond",Georgia,serif;font-size:42px;line-height:1;font-weight:600;color:#74374f}
+.rose-ring span{font-size:10px;color:#9c6b7c;margin-top:5px}
+.rose-progress-copy{flex:1;min-width:0}
+.rose-progress-copy h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;line-height:1.05;color:#71364f;margin-bottom:8px}
+.rose-progress-copy p{font-size:11px;line-height:1.7;color:#996a7d}
+.rose-progress-stats{display:flex;flex-wrap:wrap;gap:8px 15px;margin-top:13px;font-size:10px;color:#9b6279}
+.rose-progress-source{display:none!important}
+.trail-panel,.trail-grid>div{background:linear-gradient(135deg,#fffaf9d9,#fdf0edc9)!important;border:1px solid #fff!important;box-shadow:0 8px 24px #925c6e12!important}
+.trail-moods button{border-radius:50%;width:68px;height:68px;flex:0 1 82px;background:#f9e4df;color:#995c73;border:1px solid #fff9}
+.trail-moods{justify-content:space-around;gap:14px}
+.trail-moods button[aria-pressed=true]{background:#eec0c9;border-color:#ac6c88}
+.trail-moods small{font-size:10px}
+.trail-btn.primary{background:linear-gradient(100deg,#7e3e59,#a75d79)!important;box-shadow:0 7px 16px #8d49632b}
+.trail-btn{border-radius:22px}
+.trail-title{color:#71364f}
+.trail-days .trail-dot{background:#fff6ef;border-style:solid;border-color:#ddbac1}
+.trail-day.visited .trail-dot{background:linear-gradient(140deg,#b3748c,#84445f);color:white}
+.trail-panel .trail-row>span{color:#c29369}
+.dark .rose-progress{background:linear-gradient(120deg,#422a3b,#362431)!important;border-color:#755367!important}
+.dark .rose-ring>div{background:#392635}
+.dark .rose-progress-copy h2,.dark .rose-ring strong,.dark .trail-title{color:#f5dce8}
+.dark .rose-progress-copy p,.dark .rose-progress-stats,.dark .rose-ring span{color:#c6a1b6}
+.dark .trail-panel,.dark .trail-grid>div{background:linear-gradient(135deg,#3b2937,#312330)!important;border-color:#624255!important}
+.dark .trail-moods button{background:#533544;color:#eed6e3;border-color:#765267}
+.dark .trail-moods button[aria-pressed=true]{background:#85526c}
+@media(max-width:600px){.rose-progress{gap:19px;padding:23px 19px!important}.rose-ring{flex-basis:108px;width:108px;height:108px;padding:8px}.rose-ring strong{font-size:37px}.rose-progress-copy h2{font-size:27px}.rose-progress-copy p{font-size:10px}.rose-progress-stats{gap:5px 9px;font-size:9px}#page-home>div:first-child h1{font-size:42px}#page-home>div:first-child{min-height:250px}}
+@media(max-width:350px){.rose-ring{flex-basis:88px;width:88px;height:88px}.rose-progress{gap:12px}.rose-progress-copy h2{font-size:24px}}
+</style></head>
 <body class="bg-luxe-bg dark:bg-luxe-darkBg text-luxe-text dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row">
 
     <!-- DESKTOP SIDEBAR -->
@@ -1196,5 +1239,24 @@ window.onload=function(){
  trailRollover();saveState();renderTrail();
  setInterval(()=>{if(trail.day!==localDay()){trailRollover();saveState();renderTrail()}},30000);
 };
+</script>
+<script id="rose-atelier-ui">
+(()=>{
+const start=window.onload;
+window.onload=function(){
+ start();
+ const source=document.getElementById('overall-progress-bar').closest('.bg-luxe-card');
+ source.classList.add('rose-progress-source');
+ const panel=document.createElement('div');panel.className='rose-progress';panel.setAttribute('aria-label','Progresso do dia');
+ panel.innerHTML='<div class="rose-ring"><div><strong id="rose-percent">0%</strong><span>do seu dia</span></div></div><div class="rose-progress-copy"><h2>Você está<br>no caminho!</h2><p>Cada pequeno passo constrói<br>a vida que você ama.</p><div class="rose-progress-stats"><span id="rose-tasks"></span><span id="rose-water"></span><span id="rose-workout"></span></div></div>';
+ const banner=document.querySelector('#page-home>div:first-child');
+ banner.after(panel);
+ const update=()=>{const percent=document.getElementById('overall-progress-text').textContent;panel.querySelector('.rose-ring').style.setProperty('--progress',percent);document.getElementById('rose-percent').textContent=percent;document.getElementById('rose-tasks').textContent='Tarefas '+document.getElementById('stat-tasks').textContent;document.getElementById('rose-water').textContent='Água '+document.getElementById('stat-water').textContent;document.getElementById('rose-workout').textContent='Treino '+document.getElementById('stat-workout').textContent;};
+ const observer=new MutationObserver(update);observer.observe(source,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['style']});update();
+ const greeting=document.getElementById('greeting-title');greeting.textContent='Seu dia, no seu ritmo.';
+ banner.querySelector('p').textContent='Cuide de você. Um passo de cada vez.';
+ const brand=banner.querySelector('.trail-mark');brand.innerHTML='<span aria-hidden="true"></span>LIFE TRAIL · ADRIANA FEU';
+};
+})();
 </script></body>
 </html>
