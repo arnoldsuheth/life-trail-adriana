@@ -351,7 +351,7 @@ aside .profile-identity{gap:13px!important;align-items:center!important;padding-
 @media(max-width:600px){main{padding:16px!important;width:100%!important;min-width:0}.profile-name{font-size:22px!important}.profile-caption{font-size:9px!important}.profile-avatar{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important}.profile-mobile{margin-bottom:22px!important}#page-home>div:first-child{padding:24px!important}#page-home>div:first-child h1{font-size:30px!important}.daily-word{padding:23px!important}.daily-message{font-size:20px!important}.daily-actions .glass-link{min-height:48px}.rose-progress{gap:16px!important}.rose-progress-copy h2{font-size:21px!important}.rose-ring{flex-basis:96px!important;width:96px!important;height:96px!important}.rose-ring strong{font-size:33px!important}nav.fixed{gap:0!important;padding-left:5px!important;padding-right:5px!important}nav.fixed button{padding:8px 5px!important;min-width:0!important;box-shadow:none!important;background:transparent!important;border-color:transparent!important;flex:1}nav.fixed button span{font-size:9px!important}.daily-date{font-size:10px}.trail-grid{gap:16px}.formgrid{grid-template-columns:1fr 1fr}.brand{font-size:20px;letter-spacing:2px}}
 @media(prefers-reduced-motion:reduce){.page-content.active{animation:none!important}}
 </style></head>
-<body class="bg-luxe-bg dark:bg-luxe-darkBg text-luxe-text dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row"><div class="preview-label">PRÉVIA REVISADA · ROSÉ ATELIER · PARA APROVAÇÃO</div>
+<body class="bg-luxe-bg dark:bg-luxe-darkBg text-luxe-text dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row">
 
     <!-- DESKTOP SIDEBAR -->
     <aside class="hidden md:flex flex-col w-64 lg:w-72 bg-luxe-card dark:bg-luxe-darkCard border-r border-luxe-border dark:border-luxe-darkBorder h-screen sticky top-0 p-6 justify-between z-20 shadow-sm">
@@ -426,7 +426,7 @@ aside .profile-identity{gap:13px!important;align-items:center!important;padding-
     </nav>
 
     <!-- MAIN CONTENT AREA -->
-    <main class="flex-1 p-4 md:p-8 lg:p-10 max-w-6xl mx-auto w-full">
+    <main class="flex-1 p-4 md:p-8 lg:p-10 max-w-6xl mx-auto w-full"><div class="preview-label" style="border-radius:12px;margin-bottom:20px">PRÉVIA REVISADA · ROSÉ ATELIER</div>
 
         <!-- MOBILE TOP BAR -->
         <div class="md:hidden flex justify-between items-center mb-6 pt-2">
@@ -1374,7 +1374,7 @@ const now=new Date(),key=now.getFullYear()+'-'+now.getMonth()+'-'+now.getDate();
 const ordinal=Math.floor(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/86400000),w=words[((ordinal%words.length)+words.length)%words.length];
 const host=document.getElementById('daily-word');if(!host)return;
 host.innerHTML='<div class="kicker">Uma palavra para o seu dia</div><p class="daily-message">'+w[0]+'</p><p class="daily-reading">Para ler e refletir na Bíblia: <strong>'+w[1]+'</strong><br><small>Mensagem de incentivo inspirada na fé; não é uma transcrição do versículo.</small></p><div class="daily-actions">'+
-(document.getElementById('page-home')?'<button class="glass-link primary" onclick="switchTab(\'espiritual\')">♡ Meu momento com Deus</button><button class="glass-link" onclick="switchTab(\'trabalho\')">✧ Planejar meu dia</button>':'<a class="glass-link primary" href="./#tempo-com-deus">♡ Meu momento com Deus</a><button class="glass-link" onclick="document.querySelector(\'[data-tab=lancar]\').click()">＋ Registrar meu dia na loja</button>')+
+(document.getElementById('page-home')?'<button class="glass-link primary" onclick="switchTab(\'espiritual\')">♡ Meu momento com Deus</button><button class="glass-link" onclick="switchTab(\'trabalho\')">✧ Planejar meu dia</button>':'<a class="glass-link primary" href="previa-gestao.html#tempo-com-deus">♡ Meu momento com Deus</a><button class="glass-link" onclick="document.querySelector(\'[data-tab=lancar]\').click()">＋ Registrar resultados do dia</button>')+
 '</div><div class="daily-date">'+now.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})+' · Uma nova mensagem a cada dia.</div>';
 const heading=document.getElementById('greeting-title');if(heading){heading.textContent=w[2];const p=heading.parentElement.querySelector('p');if(p)p.textContent=(now.getHours()<12?'Bom dia':now.getHours()<18?'Boa tarde':'Boa noite')+', Adriana. Seu tempo, sua fé, sua jornada.';}
 }
