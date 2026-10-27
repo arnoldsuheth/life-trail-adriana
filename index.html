@@ -488,6 +488,45 @@ html.noir-app #monthly-overview{background:linear-gradient(135deg,var(--na-panel
 
 html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-app #page-trabalho>#monthly-overview{margin-top:0!important}
 
+</style><style id="typography-review">/* Shared reading and control scale across all Life Trail pages. */
+html.noir-app{--na-muted:#655969;--na-gold:#795024;--na-gold-bright:#795024}
+html.noir-app.dark{--na-muted:#c3b9cc;--na-gold:#e4c58f;--na-gold-bright:#f3d6a4}
+html.noir-app body{font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html.noir-app button,html.noir-app .glass-link{font-family:"DM Sans",Arial,sans-serif;font-size:13px;line-height:1.4;font-weight:600;letter-spacing:.01em;min-height:44px;white-space:normal;overflow-wrap:break-word}
+html.noir-app .page-content :is(p,.lt-description,.lt-help,.trail-label){font-size:14px;line-height:1.7}
+html.noir-app .page-content :is(small,.lt-eyebrow){font-size:12px;line-height:1.6}
+html.noir-app .page-content :is(h1,.lt-heading){font-size:clamp(25px,3vw,32px)!important;line-height:1.22!important;letter-spacing:-.6px!important;text-wrap:balance}
+html.noir-app .page-content h3.lt-heading{font-size:22px!important}
+html.noir-app .lt-field,html.noir-app .lt-check-setting{font-size:14px;line-height:1.5}
+html.noir-app .page-content :is(input:not([type=checkbox]):not([type=radio]),select,textarea){font-size:16px!important;line-height:1.5;min-height:44px}
+html.noir-app .lt-submit,html.noir-app .trail-btn{font-size:14px!important;padding:11px 16px!important;min-height:44px}
+html.noir-app .lt-page-label{font-size:13px}
+html.noir-app .lt-toolbar button{font-size:14px;min-height:44px}
+html.noir-app .ng-header,html.noir-app .ng-header.ng-settled{grid-template-columns:78px minmax(0,1fr) 44px;min-height:104px;gap:10px!important}
+html.noir-app .ng-header>.ng-avatar,html.noir-app .ng-header.ng-settled>.ng-avatar{width:78px!important;height:100px!important}
+html.noir-app .ng-header .ng-identity h1,html.noir-app .ng-header.ng-settled .ng-identity h1{font-family:Georgia,"Times New Roman",serif!important;font-size:clamp(26px,7vw,34px)!important;font-weight:400!important;font-style:italic;line-height:1.15!important;letter-spacing:-.8px!important;overflow-wrap:normal;text-wrap:balance}
+html.noir-app aside>div:first-child>.ng-side-profile,html.noir-app aside>div:first-child>.ng-side-profile.ng-settled{grid-template-columns:68px minmax(0,1fr);gap:8px!important;min-height:100px}
+html.noir-app .ng-side-profile>.ng-avatar,html.noir-app .ng-side-profile.ng-settled>.ng-avatar{width:68px!important;height:90px!important}
+html.noir-app .ng-side-profile .ng-identity h2{font-family:Georgia,serif!important;font-style:italic;font-size:23px!important;font-weight:400!important;line-height:1.2!important;overflow-wrap:normal}
+html.noir-app #workout-day-tabs{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px!important;overflow:visible!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important}
+html.noir-app #workout-day-tabs .workout-tab-btn{width:100%;min-width:0;min-height:46px;padding:10px 6px!important;font-size:14px!important;line-height:1.4;white-space:nowrap;overflow:visible!important}
+html.noir-app #workout-day-tabs .workout-tab-btn.bg-luxe-gold{background:linear-gradient(110deg,#d5b47d,#f0d5a4)!important;color:#302334!important;border-color:#b08a50!important;box-shadow:0 3px 12px #aa7d3020!important}
+html.noir-app #workout-day-title{font-size:12px!important;line-height:1.5;letter-spacing:1px;color:var(--na-gold)!important}
+html.noir-app #workout-focus-title{font-size:clamp(22px,2.5vw,28px)!important;line-height:1.3!important;text-wrap:balance}
+html.noir-app #workout-progress-badge{font-size:12px!important;padding:8px 12px;white-space:nowrap;color:var(--na-gold)!important}
+html.noir-app .ng-activity-row>.ng-activity-title{font-size:15px!important;line-height:1.6!important}
+html.noir-app .lt-table{font-size:14px;line-height:1.5}
+html.noir-app .lt-table th{font-size:12px}
+html.noir-app :is(.na-feature p,.na-feature-bottom small,.na-step-label,.na-step-count,.na-disclaimer,.pt-tagline){font-size:12px;line-height:1.6}
+html.noir-app #daily-word .daily-actions button{font-size:13px!important;min-height:44px}
+html.noir-app nav.fixed span{font-size:11px!important;line-height:1.4;letter-spacing:0}
+html.noir-app .na-step-label{font-size:11px;letter-spacing:0}
+html.noir-app .na-kicker{font-size:11px;letter-spacing:2px}
+html.noir-app .pt-actions button{font-size:14px;min-height:48px}
+html.noir-app #page-home .pt-first-name{line-height:1!important}
+html.noir-app .lt-book summary{font-size:15px;line-height:1.5}
+@media(max-width:767px){html.noir-app #workout-day-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}html.noir-app .page-content:not(#page-home):not(#page-configuracoes)>div:first-child{padding:22px!important;min-height:125px}html.noir-app .page-content:not(#page-home)>div:first-child:before{font-size:10px;letter-spacing:.5px}html.noir-app #workout-progress-badge{align-self:flex-start}html.noir-app #workout-exercises-list{margin-top:22px!important}html.noir-app #page-treinos>div:has(#workout-focus-title)>div:first-child{flex-wrap:wrap;gap:12px}html.noir-app #page-treinos>div:has(#workout-focus-title)>div:first-child>div{flex:1 1 180px}}
+@media(max-width:350px){html.noir-app .ng-header,html.noir-app .ng-header.ng-settled{grid-template-columns:68px minmax(0,1fr) 44px;gap:6px!important}html.noir-app .ng-header>.ng-avatar,html.noir-app .ng-header.ng-settled>.ng-avatar{width:68px!important;height:90px!important}html.noir-app .ng-header .ng-identity h1,html.noir-app .ng-header.ng-settled .ng-identity h1{font-size:26px!important}html.noir-app nav.fixed span{font-size:10px!important}}
 </style></head>
 <body class="bg-luxe-bg dark:bg-luxe-darkBg text-luxe-text dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row">
 
@@ -635,7 +674,7 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
                 <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm">
                     <h3 class="font-bold text-base mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-leaf text-luxe-sage"></i>
-                        <span>Hábitos Diários</span>
+                        <span>Hábitos diários</span>
                     </h3>
                     <div class="space-y-3">
                         <!-- Water Tracker -->
@@ -645,7 +684,7 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
                                     <i class="fa-solid fa-glass-water"></i>
                                 </div>
                                 <div>
-                                    <span class="text-xs font-bold block">Hidratação (Copos de 300ml)</span>
+                                    <span class="text-xs font-bold block">Hidratação · copos de 300 ml</span>
                                     <span class="text-[11px] text-luxe-muted" id="water-count-text">0 de 8 copos (0ml)</span>
                                 </div>
                             </div>
@@ -725,7 +764,7 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
         <!-- PAGE 3: TREINOS (FITNESS) -->
         <section id="page-treinos" class="page-content space-y-6">
             <div class="rounded-3xl p-6 md:p-8 bg-gradient-to-r from-amber-600 via-luxe-gold to-orange-500 text-white shadow-xl shadow-amber-600/10">
-                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1">Rotina de Treinos 🌸</h1>
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1">Minha rotina de treinos 🌸</h1>
                 <p class="text-white/90 text-xs md:text-sm font-medium">Constância e saúde para cuidar do seu corpo todos os dias.</p>
             </div>
 
@@ -744,9 +783,9 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
                 <div class="flex justify-between items-center mb-4">
                     <div>
                         <span id="workout-day-title" class="text-xs font-bold text-luxe-gold uppercase tracking-wider block">Ficha do Dia</span>
-                        <h3 id="workout-focus-title" class="font-extrabold text-lg text-luxe-text dark:text-gray-100">Carregando Treino...</h3>
+                        <h3 id="workout-focus-title" class="font-extrabold text-lg text-luxe-text dark:text-gray-100">Carregando treino…</h3>
                     </div>
-                    <span id="workout-progress-badge" class="px-3 py-1 rounded-full text-xs font-extrabold bg-luxe-gold/10 text-luxe-gold">0% Concluído</span>
+                    <span id="workout-progress-badge" class="px-3 py-1 rounded-full text-xs font-extrabold bg-luxe-gold/10 text-luxe-gold">0% concluído</span>
                 </div>
 
                 <!-- Exercises List -->
@@ -759,7 +798,7 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
         <!-- PAGE 4: FINANÇAS (FINANCE) -->
         <section id="page-financas" class="page-content space-y-6">
             <div class="rounded-3xl p-6 md:p-8 bg-gradient-to-r from-luxe-rose via-purple-600 to-indigo-600 text-white shadow-xl shadow-luxe-rose/10">
-                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1">Vida Financeira 💰</h1>
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1">Minha vida financeira</h1>
                 <p class="text-white/90 text-xs md:text-sm font-medium">Controle claro e prático de entradas e saídas do mês.</p>
             </div>
 
@@ -767,7 +806,7 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder p-5 rounded-2xl shadow-sm">
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-semibold text-luxe-muted">Receitas / Entradas</span>
+                        <span class="text-xs font-semibold text-luxe-muted">Entradas</span>
                         <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                             <i class="fa-solid fa-arrow-down"></i>
                         </div>
@@ -777,7 +816,7 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
 
                 <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder p-5 rounded-2xl shadow-sm">
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-semibold text-luxe-muted">Despesas / Gastos</span>
+                        <span class="text-xs font-semibold text-luxe-muted">Saídas</span>
                         <div class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center">
                             <i class="fa-solid fa-arrow-up"></i>
                         </div>
@@ -807,7 +846,7 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
                     <form id="finance-form" onsubmit="addTransaction(event)" class="space-y-3">
                         <div>
                             <label class="block text-[11px] font-bold text-luxe-muted uppercase mb-1">Descrição</label>
-                            <input type="text" id="fin-desc" placeholder="Ex: Supermercado, Salário" required class="w-full p-2.5 rounded-xl text-xs bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-luxe-rose">
+                            <input type="text" id="fin-desc" placeholder="Ex.: supermercado, salário" required class="w-full p-2.5 rounded-xl text-xs bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-luxe-rose">
                         </div>
                         <div class="grid grid-cols-2 gap-2">
                             <div>
@@ -966,27 +1005,27 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
         // WORKOUT ROUTINES DATABASE
         const workoutDatabase = {
             'Segunda': {
-                focus: 'Membros Inferiores (Quadríceps e Glúteos)',
-                exercises: ['Agachamento Livre (4x 10-12)', 'Leg Press 45° (4x 12)', 'Cadeira Extensora (3x 15)', 'Afundo com Halteres (3x 10 cada leg)', 'Elevação Pélvica (4x 12)']
+                focus: 'Membros inferiores · quadríceps e glúteos',
+                exercises: ['Agachamento Livre (4x 10-12)', 'Leg Press 45° (4x 12)', 'Cadeira Extensora (3x 15)', 'Afundo com Halteres (3x 10 cada perna)', 'Elevação Pélvica (4x 12)']
             },
             'Terça': {
-                focus: 'Membros Superiores & Core',
+                focus: 'Membros superiores e abdômen',
                 exercises: ['Puxada Alta na Polia (3x 12)', 'Desenvolvimento com Halteres (3x 12)', 'Remada Baixa Curvada (3x 12)', 'Tríceps Corda (3x 15)', 'Prancha Abdominal (3x 45s)']
             },
             'Quarta': {
-                focus: 'Cardio de Alta Intensidade & Mobilidade',
+                focus: 'Cardio e mobilidade',
                 exercises: ['Caminhada Inclinada / Corrida (30 min)', 'Abdominal Infra na Barra (3x 15)', 'Série de Alongamentos e Mobilidade (15 min)']
             },
             'Quinta': {
-                focus: 'Posterior de Coxa & Glúteos',
+                focus: 'Posterior de coxa e glúteos',
                 exercises: ['Stiff com Barra/Halteres (4x 12)', 'Mesa Flexora (4x 12)', 'Cadeira Abdutora (4x 15)', 'Glúteo na Polia (3x 12 cada lado)']
             },
             'Sexta': {
-                focus: 'Full Body & Core Estabilizador',
-                exercises: ['Agachamento Sumô (3x 12)', 'Supino Reto com Halteres (3x 12)', 'Rosca Direta Biceps (3x 12)', 'Abdominal Remador (3x 20)']
+                focus: 'Corpo inteiro e abdômen',
+                exercises: ['Agachamento Sumô (3x 12)', 'Supino Reto com Halteres (3x 12)', 'Rosca direta de bíceps (3x 12)', 'Abdominal Remador (3x 20)']
             },
             'Sábado': {
-                focus: 'Caminhada Livre / Descanso Ativo',
+                focus: 'Caminhada livre e descanso ativo',
                 exercises: ['Caminhada ao Ar Livre (45 min)', 'Série de Alongamento Relaxante']
             }
         };
@@ -1138,7 +1177,7 @@ html.noir-app #page-trabalho>div:first-child{display:none!important}html.noir-ap
             }).join('');
 
             const percent = Math.round((doneCount / routine.exercises.length) * 100);
-            document.getElementById('workout-progress-badge').innerText = `${percent}% Concluído`;
+            document.getElementById('workout-progress-badge').innerText = `${percent}% concluído`;
             document.getElementById('stat-workout').innerText = `${percent}%`;
         }
 
