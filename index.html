@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Pessoal | Adriana</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        luxe: {
+                            bg: '#FAF8F5',
+                            card: '#FFFFFF',
+                            border: '#EFECE6',
+                            text: '#2D2A32',
+                            muted: '#8C8894',
+                            rose: '#B5838D',
+                            roseLight: '#F4ACB7',
+                            gold: '#D4A373',
+                            sage: '#84A98C',
+                            darkBg: '#0F0E13',
+                            darkCard: '#18161E',
+                            darkBorder: '#2B2733'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism & Custom Aesthetics */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-card {
+            background: rgba(24, 22, 30, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #EFECE6;
+            border-radius: 999px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #2B2733;
+        }
+
+        /* Checkbox Custom styling */
+        .custom-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #B5838D;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox:checked {
+            background-color: #B5838D;
+            border-color: #B5838D;
+        }
+        .custom-checkbox:checked::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            font-size: 11px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Smooth Page Fade */
+        .page-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .page-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animated Progress Bar */
+        .progress-bar-fill {
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-luxe-bg dark:bg-luxe-darkBg text-luxe-text dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row">
+
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="hidden md:flex flex-col w-64 lg:w-72 bg-luxe-card dark:bg-luxe-darkCard border-r border-luxe-border dark:border-luxe-darkBorder h-screen sticky top-0 p-6 justify-between z-20 shadow-sm">
+        <div>
+            <!-- Logo & User Info -->
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-luxe-rose to-luxe-gold flex items-center justify-center text-white font-bold text-lg shadow-md shadow-luxe-rose/20">
+                    A
+                </div>
+                <div>
+                    <h2 class="font-bold text-base tracking-tight leading-none bg-gradient-to-r from-luxe-rose to-luxe-gold bg-clip-text text-transparent">Adriana Feu</h2>
+                    <p class="text-xs text-luxe-muted mt-1 font-medium">Painel Pessoal &amp; Rotina</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="space-y-1.5">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm text-luxe-muted hover:text-luxe-rose hover:bg-luxe-rose/10 transition-all">
+                    <i class="fa-solid fa-house text-lg w-5"></i>
+                    <span>Início</span>
+                </button>
+                <button onclick="switchTab('trabalho')" id="nav-trabalho" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm text-luxe-muted hover:text-luxe-rose hover:bg-luxe-rose/10 transition-all">
+                    <i class="fa-solid fa-briefcase text-lg w-5"></i>
+                    <span>Trabalho</span>
+                </button>
+                <button onclick="switchTab('treinos')" id="nav-treinos" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm text-luxe-muted hover:text-luxe-rose hover:bg-luxe-rose/10 transition-all">
+                    <i class="fa-solid fa-dumbbell text-lg w-5"></i>
+                    <span>Treinos</span>
+                </button>
+                <button onclick="switchTab('financas')" id="nav-financas" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm text-luxe-muted hover:text-luxe-rose hover:bg-luxe-rose/10 transition-all">
+                    <i class="fa-solid fa-wallet text-lg w-5"></i>
+                    <span>Finanças</span>
+                </button>
+                <button onclick="switchTab('espiritual')" id="nav-espiritual" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm text-luxe-muted hover:text-luxe-rose hover:bg-luxe-rose/10 transition-all">
+                    <i class="fa-solid fa-book-bible text-lg w-5"></i>
+                    <span>Espiritual</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Sidebar Footer & Dark Mode -->
+        <div class="pt-6 border-t border-luxe-border dark:border-luxe-darkBorder flex items-center justify-between">
+            <span class="text-xs font-semibold text-luxe-muted">Tema Escuro</span>
+            <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-xl border border-luxe-border dark:border-luxe-darkBorder flex items-center justify-center text-luxe-text dark:text-gray-200 hover:bg-luxe-rose/10 transition-colors">
+                <i id="theme-icon-desktop" class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MOBILE BOTTOM NAVIGATION BAR -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-luxe-card/90 dark:bg-luxe-darkCard/90 backdrop-blur-lg border-t border-luxe-border dark:border-luxe-darkBorder px-3 py-2 flex justify-around items-center z-40 shadow-lg">
+        <button onclick="switchTab('home')" id="mob-nav-home" class="mob-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-luxe-muted transition-all">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-semibold">Início</span>
+        </button>
+        <button onclick="switchTab('trabalho')" id="mob-nav-trabalho" class="mob-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-luxe-muted transition-all">
+            <i class="fa-solid fa-briefcase text-lg"></i>
+            <span class="text-[10px] font-semibold">Trabalho</span>
+        </button>
+        <button onclick="switchTab('treinos')" id="mob-nav-treinos" class="mob-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-luxe-muted transition-all">
+            <i class="fa-solid fa-dumbbell text-lg"></i>
+            <span class="text-[10px] font-semibold">Treinos</span>
+        </button>
+        <button onclick="switchTab('financas')" id="mob-nav-financas" class="mob-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-luxe-muted transition-all">
+            <i class="fa-solid fa-wallet text-lg"></i>
+            <span class="text-[10px] font-semibold">Finanças</span>
+        </button>
+        <button onclick="switchTab('espiritual')" id="mob-nav-espiritual" class="mob-nav-btn flex flex-col items-center gap-1 p-2 rounded-xl text-luxe-muted transition-all">
+            <i class="fa-solid fa-book-bible text-lg"></i>
+            <span class="text-[10px] font-semibold">Espiritual</span>
+        </button>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 p-4 md:p-8 lg:p-10 max-w-6xl mx-auto w-full">
+
+        <!-- MOBILE TOP BAR -->
+        <div class="md:hidden flex justify-between items-center mb-6 pt-2">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-luxe-rose to-luxe-gold flex items-center justify-center text-white font-bold text-sm shadow-sm">
+                    A
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm leading-none bg-gradient-to-r from-luxe-rose to-luxe-gold bg-clip-text text-transparent">Adriana Feu</h1>
+                    <span class="text-[10px] text-luxe-muted font-medium">Painel Pessoal</span>
+                </div>
+            </div>
+            <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-xl border border-luxe-border dark:border-luxe-darkBorder flex items-center justify-center text-luxe-text dark:text-gray-200">
+                <i id="theme-icon-mobile" class="fa-solid fa-moon text-sm"></i>
+            </button>
+        </div>
+
+        <!-- PAGE 1: INÍCIO (HOME / OVERVIEW) -->
+        <section id="page-home" class="page-content space-y-6">
+            <!-- Dynamic Welcome Banner -->
+            <div class="relative overflow-hidden rounded-3xl p-6 md:p-8 bg-gradient-to-r from-luxe-rose via-luxe-roseLight to-luxe-gold text-white shadow-xl shadow-luxe-rose/15">
+                <div class="relative z-10 max-w-lg">
+                    <span id="current-date-badge" class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold uppercase tracking-wider mb-3">
+                        Carregando data...
+                    </span>
+                    <h1 id="greeting-title" class="text-2xl md:text-3xl font-extrabold tracking-tight mb-2">
+                        Bom dia, Adriana! ✨
+                    </h1>
+                    <p class="text-white/90 text-xs md:text-sm leading-relaxed font-medium">
+                        Sua rotina organizada e equilibrada para atingir seus objetivos hoje.
+                    </p>
+                </div>
+                <i class="fa-solid fa-sparkles absolute -right-4 -bottom-4 text-9xl text-white/10 pointer-events-none"></i>
+            </div>
+
+            <!-- Daily Overview & Progress Bar -->
+            <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm">
+                <div class="flex justify-between items-center mb-3">
+                    <div>
+                        <h3 class="font-bold text-base text-luxe-text dark:text-gray-100">Progresso do Dia</h3>
+                        <p class="text-xs text-luxe-muted">Acompanhe a conclusão das suas metas diárias</p>
+                    </div>
+                    <span id="overall-progress-text" class="text-sm font-extrabold text-luxe-rose">0%</span>
+                </div>
+                <!-- Progress Bar -->
+                <div class="w-full bg-luxe-bg dark:bg-luxe-darkBg rounded-full h-3 overflow-hidden p-0.5 border border-luxe-border/50 dark:border-luxe-darkBorder/50">
+                    <div id="overall-progress-bar" class="progress-bar-fill bg-gradient-to-r from-luxe-rose to-luxe-gold h-full rounded-full w-0"></div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+                    <div class="p-2.5 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg/50 border border-luxe-border dark:border-luxe-darkBorder">
+                        <span class="block text-[10px] text-luxe-muted font-bold uppercase">Tarefas</span>
+                        <span id="stat-tasks" class="text-sm font-bold text-luxe-rose">0/0</span>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg/50 border border-luxe-border dark:border-luxe-darkBorder">
+                        <span class="block text-[10px] text-luxe-muted font-bold uppercase">Água</span>
+                        <span id="stat-water" class="text-sm font-bold text-luxe-gold">0/8</span>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg/50 border border-luxe-border dark:border-luxe-darkBorder">
+                        <span class="block text-[10px] text-luxe-muted font-bold uppercase">Treino</span>
+                        <span id="stat-workout" class="text-sm font-bold text-luxe-sage">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Habit Tracker & Daily Devotional -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Habit Tracker -->
+                <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm">
+                    <h3 class="font-bold text-base mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-leaf text-luxe-sage"></i>
+                        <span>Hábitos Diários</span>
+                    </h3>
+                    <div class="space-y-3">
+                        <!-- Water Tracker -->
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
+                                    <i class="fa-solid fa-glass-water"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold block">Hidratação (Copos de 300ml)</span>
+                                    <span class="text-[11px] text-luxe-muted" id="water-count-text">0 de 8 copos (0ml)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="changeWater(-1)" class="w-7 h-7 rounded-lg border border-luxe-border dark:border-luxe-darkBorder flex items-center justify-center text-xs font-bold hover:bg-luxe-rose/10">-</button>
+                                <button onclick="changeWater(1)" class="w-7 h-7 rounded-lg bg-blue-500 text-white flex items-center justify-center text-xs font-bold shadow-sm shadow-blue-500/20">+</button>
+                            </div>
+                        </div>
+                        <!-- Other Checkable Habits -->
+                        <div class="space-y-2" id="habits-list">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Verse Card -->
+                <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-luxe-rose flex items-center gap-1.5">
+                                <i class="fa-solid fa-quote-left"></i> Versículo do Dia
+                            </span>
+                            <button onclick="copyVerse()" class="text-xs text-luxe-muted hover:text-luxe-rose flex items-center gap-1">
+                                <i class="fa-regular fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <blockquote id="daily-verse-text" class="italic text-xs md:text-sm text-luxe-text dark:text-gray-200 border-l-2 border-luxe-rose pl-3 py-1 my-2 leading-relaxed">
+                            "Tudo posso naquele que me fortalece." — Filipenses 4:13
+                        </blockquote>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-luxe-border dark:border-luxe-darkBorder">
+                        <label class="block text-[11px] font-bold text-luxe-muted uppercase mb-1.5">Anotação/Reflexão Diária</label>
+                        <textarea id="home-devotional-note" oninput="saveHomeNote()" placeholder="O que Deus falou com você hoje?" class="w-full h-20 p-3 rounded-xl text-xs bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-luxe-rose resize-none"></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: TRABALHO (WORK) -->
+        <section id="page-trabalho" class="page-content space-y-6">
+            <div class="rounded-3xl p-6 md:p-8 bg-gradient-to-r from-emerald-600 via-teal-600 to-luxe-sage text-white shadow-xl shadow-emerald-600/10">
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1">Gestão de Trabalho 💼</h1>
+                <p class="text-white/90 text-xs md:text-sm font-medium">Mantenha o foco absoluto nas suas entregas mais importantes de hoje.</p>
+            </div>
+
+            <!-- Top 3 Priorities -->
+            <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h3 class="font-bold text-base flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-emerald-500"></i>
+                            <span>Foco do Dia (Top 3 Prioridades)</span>
+                        </h3>
+                        <p class="text-xs text-luxe-muted">Complete as tarefas mais estratégicas do dia</p>
+                    </div>
+                    <button onclick="openModal('task')" class="px-3 py-1.5 bg-emerald-500 text-white text-xs font-semibold rounded-xl hover:bg-emerald-600 transition-colors shadow-sm flex items-center gap-1.5">
+                        <i class="fa-solid fa-plus"></i> Nova
+                    </button>
+                </div>
+
+                <div id="tasks-container" class="space-y-3">
+                    <!-- Tasks injected by JS -->
+                </div>
+            </div>
+
+            <!-- Quick Brain Dump / Notes -->
+            <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm">
+                <h3 class="font-bold text-base mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-luxe-gold"></i>
+                    <span>Notas Rápidas &amp; Insights</span>
+                </h3>
+                <p class="text-xs text-luxe-muted mb-3">Espaço livre para capturar ideias ou lembretes rápidos ao longo do dia.</p>
+                <textarea id="work-brain-dump" oninput="saveWorkNotes()" placeholder="Digite aqui seus pensamentos, ideias para projetos ou lembretes..." class="w-full h-36 p-3.5 rounded-xl text-xs md:text-sm bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none leading-relaxed"></textarea>
+            </div>
+        </section>
+
+        <!-- PAGE 3: TREINOS (FITNESS) -->
+        <section id="page-treinos" class="page-content space-y-6">
+            <div class="rounded-3xl p-6 md:p-8 bg-gradient-to-r from-amber-600 via-luxe-gold to-orange-500 text-white shadow-xl shadow-amber-600/10">
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1">Rotina de Treinos 🌸</h1>
+                <p class="text-white/90 text-xs md:text-sm font-medium">Constância e saúde para cuidar do seu corpo todos os dias.</p>
+            </div>
+
+            <!-- Day Selector Tabs -->
+            <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none" id="workout-day-tabs">
+                <button onclick="setWorkoutDay('Segunda')" class="workout-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap border transition-all" data-day="Segunda">Segunda</button>
+                <button onclick="setWorkoutDay('Terça')" class="workout-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap border transition-all" data-day="Terça">Terça</button>
+                <button onclick="setWorkoutDay('Quarta')" class="workout-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap border transition-all" data-day="Quarta">Quarta</button>
+                <button onclick="setWorkoutDay('Quinta')" class="workout-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap border transition-all" data-day="Quinta">Quinta</button>
+                <button onclick="setWorkoutDay('Sexta')" class="workout-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap border transition-all" data-day="Sexta">Sexta</button>
+                <button onclick="setWorkoutDay('Sábado')" class="workout-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap border transition-all" data-day="Sábado">Sábado</button>
+            </div>
+
+            <!-- Active Workout Routine Card -->
+            <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <span id="workout-day-title" class="text-xs font-bold text-luxe-gold uppercase tracking-wider block">Ficha do Dia</span>
+                        <h3 id="workout-focus-title" class="font-extrabold text-lg text-luxe-text dark:text-gray-100">Carregando Treino...</h3>
+                    </div>
+                    <span id="workout-progress-badge" class="px-3 py-1 rounded-full text-xs font-extrabold bg-luxe-gold/10 text-luxe-gold">0% Concluído</span>
+                </div>
+
+                <!-- Exercises List -->
+                <div id="workout-exercises-list" class="space-y-3">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: FINANÇAS (FINANCE) -->
+        <section id="page-financas" class="page-content space-y-6">
+            <div class="rounded-3xl p-6 md:p-8 bg-gradient-to-r from-luxe-rose via-purple-600 to-indigo-600 text-white shadow-xl shadow-luxe-rose/10">
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1">Vida Financeira 💰</h1>
+                <p class="text-white/90 text-xs md:text-sm font-medium">Controle claro e prático de entradas e saídas do mês.</p>
+            </div>
+
+            <!-- Financial Summary Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder p-5 rounded-2xl shadow-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-semibold text-luxe-muted">Receitas / Entradas</span>
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </div>
+                    </div>
+                    <h2 id="fin-income" class="text-xl md:text-2xl font-extrabold text-emerald-500">R$ 0,00</h2>
+                </div>
+
+                <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder p-5 rounded-2xl shadow-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-semibold text-luxe-muted">Despesas / Gastos</span>
+                        <div class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-up"></i>
+                        </div>
+                    </div>
+                    <h2 id="fin-expenses" class="text-xl md:text-2xl font-extrabold text-rose-500">R$ 0,00</h2>
+                </div>
+
+                <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder p-5 rounded-2xl shadow-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-semibold text-luxe-muted">Saldo Atual</span>
+                        <div class="w-8 h-8 rounded-lg bg-luxe-rose/10 text-luxe-rose flex items-center justify-center">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                    </div>
+                    <h2 id="fin-balance" class="text-xl md:text-2xl font-extrabold text-luxe-rose">R$ 0,00</h2>
+                </div>
+            </div>
+
+            <!-- Transaction Logger & History -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Add Transaction Form -->
+                <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm h-fit">
+                    <h3 class="font-bold text-base mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-plus-circle text-luxe-rose"></i>
+                        <span>Novo Lançamento</span>
+                    </h3>
+                    <form id="finance-form" onsubmit="addTransaction(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-luxe-muted uppercase mb-1">Descrição</label>
+                            <input type="text" id="fin-desc" placeholder="Ex: Supermercado, Salário" required class="w-full p-2.5 rounded-xl text-xs bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-luxe-rose">
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[11px] font-bold text-luxe-muted uppercase mb-1">Valor (R$)</label>
+                                <input type="number" step="0.01" id="fin-amount" placeholder="0.00" required class="w-full p-2.5 rounded-xl text-xs bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-luxe-rose">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-luxe-muted uppercase mb-1">Tipo</label>
+                                <select id="fin-type" class="w-full p-2.5 rounded-xl text-xs bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-luxe-rose">
+                                    <option value="expense">Despesa</option>
+                                    <option value="income">Receita</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 mt-2 bg-gradient-to-r from-luxe-rose to-luxe-gold text-white text-xs font-bold rounded-xl shadow-md hover:opacity-95 transition-all">
+                            Adicionar Registro
+                        </button>
+                    </form>
+                </div>
+
+                <!-- History List -->
+                <div class="lg:col-span-2 bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm">
+                    <h3 class="font-bold text-base mb-4 flex items-center justify-between">
+                        <span class="flex items-center gap-2">
+                            <i class="fa-solid fa-clock-rotate-left text-luxe-muted"></i> Histórico do Mês
+                        </span>
+                        <span id="transaction-count" class="text-xs font-normal text-luxe-muted">0 registros</span>
+                    </h3>
+                    <div id="transactions-list" class="space-y-2.5 max-h-80 overflow-y-auto pr-1">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 5: ESPIRITUAL (DEVOTIONAL / GRATITUDE) -->
+        <section id="page-espiritual" class="page-content space-y-6">
+            <div class="rounded-3xl p-6 md:p-8 bg-gradient-to-r from-purple-700 via-indigo-600 to-luxe-rose text-white shadow-xl shadow-purple-700/10">
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-1">Vida Espiritual &amp; Gratidão 🙏</h1>
+                <p class="text-white/90 text-xs md:text-sm font-medium">Um espaço de paz para registrar orações, motivos de gratidão e reflexões.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Prayer Tracker -->
+                <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-base flex items-center gap-2">
+                            <i class="fa-solid fa-hands-praying text-purple-500"></i>
+                            <span>Caderno de Orações</span>
+                        </h3>
+                        <button onclick="openModal('prayer')" class="px-3 py-1.5 bg-purple-600 text-white text-xs font-semibold rounded-xl hover:bg-purple-700 transition-colors shadow-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Novo Pedido
+                        </button>
+                    </div>
+                    <div id="prayers-list" class="space-y-3">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Daily Gratitude Journal -->
+                <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-2xl p-5 md:p-6 shadow-sm">
+                    <h3 class="font-bold text-base mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-luxe-rose"></i>
+                        <span>Diário de Gratidão</span>
+                    </h3>
+                    <p class="text-xs text-luxe-muted mb-3">Pelo que você é grata no dia de hoje?</p>
+                    <textarea id="spiritual-gratitude" oninput="saveGratitude()" placeholder="1. Sou grata por...&#10;2. Sou grata por...&#10;3. Sou grata por..." class="w-full h-48 p-3.5 rounded-xl text-xs md:text-sm bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-purple-500 resize-none leading-relaxed"></textarea>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING ACTION BUTTON (FAB) -->
+    <button onclick="toggleFabMenu()" class="fixed bottom-20 md:bottom-8 right-5 w-13 h-13 w-12 h-12 rounded-2xl bg-gradient-to-tr from-luxe-rose to-luxe-gold text-white flex items-center justify-center text-xl shadow-lg shadow-luxe-rose/30 hover:scale-105 active:scale-95 transition-all z-40">
+        <i id="fab-icon" class="fa-solid fa-plus transition-transform duration-300"></i>
+    </button>
+
+    <!-- FAB QUICK MENU MODAL -->
+    <div id="fab-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden items-end md:items-center justify-center p-4" onclick="closeFabModal(event)">
+        <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-3xl p-6 w-full max-w-sm shadow-2xl animate-in slide-in-from-bottom duration-200" onclick="event.stopPropagation()">
+            <h3 class="font-extrabold text-base mb-1">Ação Rápida ✨</h3>
+            <p class="text-xs text-luxe-muted mb-4">Escolha o que deseja registrar na palma da mão:</p>
+            
+            <div class="space-y-2.5">
+                <button onclick="closeFabModal(); openModal('task');" class="w-full p-3 rounded-2xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder flex items-center gap-3 text-xs font-bold hover:bg-luxe-rose/10 transition-colors">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    Nova Tarefa de Trabalho
+                </button>
+                <button onclick="closeFabModal(); switchTab('financas');" class="w-full p-3 rounded-2xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder flex items-center gap-3 text-xs font-bold hover:bg-luxe-rose/10 transition-colors">
+                    <div class="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+                    Registrar Gasto / Receita
+                </button>
+                <button onclick="closeFabModal(); openModal('prayer');" class="w-full p-3 rounded-2xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder flex items-center gap-3 text-xs font-bold hover:bg-luxe-rose/10 transition-colors">
+                    <div class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center">
+                        <i class="fa-solid fa-hands-praying"></i>
+                    </div>
+                    Adicionar Pedido de Oração
+                </button>
+            </div>
+            <button onclick="closeFabModal()" class="w-full mt-4 py-2.5 text-xs font-bold text-luxe-muted hover:text-luxe-text">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- GENERIC INPUT MODAL -->
+    <div id="input-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-luxe-card dark:bg-luxe-darkCard border border-luxe-border dark:border-luxe-darkBorder rounded-3xl p-6 w-full max-w-md shadow-2xl">
+            <h3 id="modal-title" class="font-extrabold text-base mb-3">Adicionar Item</h3>
+            <input type="text" id="modal-input" placeholder="Digite aqui..." class="w-full p-3 rounded-xl text-xs bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-luxe-rose mb-4">
+            <div class="flex justify-end gap-2">
+                <button onclick="closeModal()" class="px-4 py-2 rounded-xl text-xs font-bold text-luxe-muted">Cancelar</button>
+                <button id="modal-save-btn" class="px-4 py-2 rounded-xl text-xs font-bold bg-luxe-rose text-white shadow-md">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // APP INITIAL STATE & LOCALSTORAGE DATA STRUCTURE
+        const defaultState = {
+            theme: 'light',
+            waterCount: 0,
+            habits: [
+                { id: 1, title: 'Leitura de Livro / Artigo (15 min)', done: false },
+                { id: 2, title: 'Tomar Vitaminas / Suplementos', done: false },
+                { id: 3, title: 'Skincare Matinal & Protetor Solar', done: false }
+            ],
+            devocionalNote: '',
+            workNotes: '',
+            tasks: [
+                { id: 1, title: 'Organizar e-mails e demandas prioritárias', done: false },
+                { id: 2, title: 'Revisar relatórios financeiros da semana', done: false },
+                { id: 3, title: 'Planejar cronograma de conteúdos', done: false }
+            ],
+            workoutChecks: {},
+            transactions: [
+                { id: 1, desc: 'Consultoria / Serviço', amount: 2500, type: 'income', date: 'Hoje' },
+                { id: 2, desc: 'Supermercado Mensal', amount: 450, type: 'expense', date: 'Hoje' }
+            ],
+            prayers: [
+                { id: 1, text: 'Pela saúde e sabedoria da minha família', done: false },
+                { id: 2, text: 'Clareza e paz nos novos projetos profissionais', done: false }
+            ],
+            gratitudeNotes: ''
+        };
+
+        // Load data or initialize default
+        let state = JSON.parse(localStorage.getItem('adriana_dashboard_data')) || defaultState;
+
+        function saveState() {
+            localStorage.setItem('adriana_dashboard_data', JSON.stringify(state));
+            updateAllProgressUI();
+        }
+
+        // WORKOUT ROUTINES DATABASE
+        const workoutDatabase = {
+            'Segunda': {
+                focus: 'Membros Inferiores (Quadríceps e Glúteos)',
+                exercises: ['Agachamento Livre (4x 10-12)', 'Leg Press 45° (4x 12)', 'Cadeira Extensora (3x 15)', 'Afundo com Halteres (3x 10 cada leg)', 'Elevação Pélvica (4x 12)']
+            },
+            'Terça': {
+                focus: 'Membros Superiores & Core',
+                exercises: ['Puxada Alta na Polia (3x 12)', 'Desenvolvimento com Halteres (3x 12)', 'Remada Baixa Curvada (3x 12)', 'Tríceps Corda (3x 15)', 'Prancha Abdominal (3x 45s)']
+            },
+            'Quarta': {
+                focus: 'Cardio de Alta Intensidade & Mobilidade',
+                exercises: ['Caminhada Inclinada / Corrida (30 min)', 'Abdominal Infra na Barra (3x 15)', 'Série de Alongamentos e Mobilidade (15 min)']
+            },
+            'Quinta': {
+                focus: 'Posterior de Coxa & Glúteos',
+                exercises: ['Stiff com Barra/Halteres (4x 12)', 'Mesa Flexora (4x 12)', 'Cadeira Abdutora (4x 15)', 'Glúteo na Polia (3x 12 cada lado)']
+            },
+            'Sexta': {
+                focus: 'Full Body & Core Estabilizador',
+                exercises: ['Agachamento Sumô (3x 12)', 'Supino Reto com Halteres (3x 12)', 'Rosca Direta Biceps (3x 12)', 'Abdominal Remador (3x 20)']
+            },
+            'Sábado': {
+                focus: 'Caminhada Livre / Descanso Ativo',
+                exercises: ['Caminhada ao Ar Livre (45 min)', 'Série de Alongamento Relaxante']
+            }
+        };
+
+        let activeWorkoutDay = 'Segunda';
+
+        // TAB SWITCHING
+        function switchTab(tabId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-btn, .mob-nav-btn').forEach(b => {
+                b.classList.remove('text-luxe-rose', 'bg-luxe-rose/10', 'font-bold');
+                b.classList.add('text-luxe-muted');
+            });
+
+            const targetPage = document.getElementById(`page-${tabId}`);
+            if (targetPage) targetPage.classList.add('active');
+
+            // Highlight desktop nav
+            const dNav = document.getElementById(`nav-${tabId}`);
+            if (dNav) {
+                dNav.classList.add('text-luxe-rose', 'bg-luxe-rose/10', 'font-bold');
+                dNav.classList.remove('text-luxe-muted');
+            }
+
+            // Highlight mobile nav
+            const mNav = document.getElementById(`mob-nav-${tabId}`);
+            if (mNav) {
+                mNav.classList.add('text-luxe-rose', 'font-bold');
+                mNav.classList.remove('text-luxe-muted');
+            }
+        }
+
+        // DARK MODE TOGGLE
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            state.theme = isDark ? 'dark' : 'light';
+            saveState();
+            updateThemeIcons(isDark);
+        }
+
+        function updateThemeIcons(isDark) {
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            const iconDesktop = document.getElementById('theme-icon-desktop');
+            if (isDark) {
+                if(iconMobile) iconMobile.className = 'fa-solid fa-sun text-amber-400';
+                if(iconDesktop) iconDesktop.className = 'fa-solid fa-sun text-amber-400';
+            } else {
+                if(iconMobile) iconMobile.className = 'fa-solid fa-moon';
+                if(iconDesktop) iconDesktop.className = 'fa-solid fa-moon';
+            }
+        }
+
+        // WATER TRACKER
+        function changeWater(delta) {
+            state.waterCount = Math.max(0, Math.min(8, state.waterCount + delta));
+            saveState();
+            renderHabits();
+        }
+
+        // RENDER HABITS
+        function renderHabits() {
+            document.getElementById('water-count-text').innerText = `${state.waterCount} de 8 copos (${state.waterCount * 300}ml)`;
+            const container = document.getElementById('habits-list');
+            container.innerHTML = state.habits.map(h => `
+                <div class="flex items-center justify-between p-3 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder">
+                    <span class="text-xs font-semibold ${h.done ? 'line-through text-luxe-muted' : ''}">${h.title}</span>
+                    <input type="checkbox" ${h.done ? 'checked' : ''} onchange="toggleHabit(${h.id})" class="custom-checkbox">
+                </div>
+            `).join('');
+            document.getElementById('stat-water').innerText = `${state.waterCount}/8`;
+        }
+
+        function toggleHabit(id) {
+            const h = state.habits.find(item => item.id === id);
+            if (h) h.done = !h.done;
+            saveState();
+            renderHabits();
+        }
+
+        // WORK / TASKS LOGIC
+        function renderTasks() {
+            const container = document.getElementById('tasks-container');
+            if (!state.tasks || state.tasks.length === 0) {
+                container.innerHTML = `<p class="text-xs text-luxe-muted italic">Nenhuma tarefa pendente.</p>`;
+                return;
+            }
+            container.innerHTML = state.tasks.map(t => `
+                <div class="flex items-center justify-between p-3.5 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder">
+                    <span class="text-xs md:text-sm font-medium ${t.done ? 'line-through text-luxe-muted' : ''}">${t.title}</span>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTask(${t.id})" class="custom-checkbox">
+                        <button onclick="deleteTask(${t.id})" class="text-xs text-luxe-muted hover:text-rose-500 ml-1"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+            `).join('');
+
+            const completed = state.tasks.filter(t => t.done).length;
+            document.getElementById('stat-tasks').innerText = `${completed}/${state.tasks.length}`;
+        }
+
+        function toggleTask(id) {
+            const t = state.tasks.find(item => item.id === id);
+            if (t) t.done = !t.done;
+            saveState();
+            renderTasks();
+        }
+
+        function deleteTask(id) {
+            state.tasks = state.tasks.filter(item => item.id !== id);
+            saveState();
+            renderTasks();
+        }
+
+        // WORKOUT LOGIC
+        function setWorkoutDay(day) {
+            activeWorkoutDay = day;
+            document.querySelectorAll('.workout-tab-btn').forEach(btn => {
+                if (btn.dataset.day === day) {
+                    btn.className = 'workout-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap bg-luxe-gold text-white border-transparent shadow-sm';
+                } else {
+                    btn.className = 'workout-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap border border-luxe-border dark:border-luxe-darkBorder text-luxe-muted hover:text-luxe-text';
+                }
+            });
+
+            const routine = workoutDatabase[day];
+            document.getElementById('workout-day-title').innerText = `Treino de ${day}`;
+            document.getElementById('workout-focus-title').innerText = routine.focus;
+
+            renderWorkoutExercises();
+        }
+
+        function renderWorkoutExercises() {
+            const routine = workoutDatabase[activeWorkoutDay];
+            const container = document.getElementById('workout-exercises-list');
+
+            let doneCount = 0;
+            container.innerHTML = routine.exercises.map((ex, idx) => {
+                const key = `${activeWorkoutDay}_${idx}`;
+                const isChecked = !!state.workoutChecks[key];
+                if (isChecked) doneCount++;
+
+                return `
+                    <div class="flex items-center justify-between p-3.5 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder">
+                        <span class="text-xs md:text-sm font-medium ${isChecked ? 'line-through text-luxe-muted' : ''}">${ex}</span>
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleWorkoutCheck('${key}')" class="custom-checkbox">
+                    </div>
+                `;
+            }).join('');
+
+            const percent = Math.round((doneCount / routine.exercises.length) * 100);
+            document.getElementById('workout-progress-badge').innerText = `${percent}% Concluído`;
+            document.getElementById('stat-workout').innerText = `${percent}%`;
+        }
+
+        function toggleWorkoutCheck(key) {
+            state.workoutChecks[key] = !state.workoutChecks[key];
+            saveState();
+            renderWorkoutExercises();
+        }
+
+        // FINANCE LOGIC
+        function addTransaction(e) {
+            e.preventDefault();
+            const desc = document.getElementById('fin-desc').value;
+            const amount = parseFloat(document.getElementById('fin-amount').value);
+            const type = document.getElementById('fin-type').value;
+
+            if (!desc || isNaN(amount)) return;
+
+            state.transactions.unshift({
+                id: Date.now(),
+                desc,
+                amount,
+                type,
+                date: new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })
+            });
+
+            document.getElementById('fin-desc').value = '';
+            document.getElementById('fin-amount').value = '';
+
+            saveState();
+            renderFinance();
+        }
+
+        function deleteTransaction(id) {
+            state.transactions = state.transactions.filter(t => t.id !== id);
+            saveState();
+            renderFinance();
+        }
+
+        function renderFinance() {
+            let income = 0;
+            let expenses = 0;
+
+            state.transactions.forEach(t => {
+                if (t.type === 'income') income += t.amount;
+                else expenses += t.amount;
+            });
+
+            const balance = income - expenses;
+
+            document.getElementById('fin-income').innerText = `R$ ${income.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            document.getElementById('fin-expenses').innerText = `R$ ${expenses.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            document.getElementById('fin-balance').innerText = `R$ ${balance.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            document.getElementById('transaction-count').innerText = `${state.transactions.length} registros`;
+
+            const container = document.getElementById('transactions-list');
+            if (state.transactions.length === 0) {
+                container.innerHTML = `<p class="text-xs text-luxe-muted italic">Nenhum lançamento cadastrado.</p>`;
+                return;
+            }
+
+            container.innerHTML = state.transactions.map(t => `
+                <div class="flex items-center justify-between p-3 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-xl ${t.type === 'income' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-rose-500/10 text-rose-500'} flex items-center justify-center text-xs">
+                            <i class="fa-solid ${t.type === 'income' ? 'fa-arrow-down' : 'fa-arrow-up'}"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold block">${t.desc}</span>
+                            <span class="text-[10px] text-luxe-muted">${t.date}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-extrabold ${t.type === 'income' ? 'text-emerald-500' : 'text-rose-500'}">
+                            ${t.type === 'income' ? '+' : '-'} R$ ${t.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                        </span>
+                        <button onclick="deleteTransaction(${t.id})" class="text-xs text-luxe-muted hover:text-rose-500"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // PRAYERS LOGIC
+        function renderPrayers() {
+            const container = document.getElementById('prayers-list');
+            if (!state.prayers || state.prayers.length === 0) {
+                container.innerHTML = `<p class="text-xs text-luxe-muted italic">Nenhum pedido de oração cadastrado.</p>`;
+                return;
+            }
+            container.innerHTML = state.prayers.map(p => `
+                <div class="flex items-center justify-between p-3.5 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder">
+                    <span class="text-xs md:text-sm font-medium ${p.done ? 'line-through text-luxe-muted' : ''}">${p.text}</span>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" ${p.done ? 'checked' : ''} onchange="togglePrayer(${p.id})" class="custom-checkbox">
+                        <button onclick="deletePrayer(${p.id})" class="text-xs text-luxe-muted hover:text-rose-500 ml-1"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function togglePrayer(id) {
+            const p = state.prayers.find(item => item.id === id);
+            if (p) p.done = !p.done;
+            saveState();
+            renderPrayers();
+        }
+
+        function deletePrayer(id) {
+            state.prayers = state.prayers.filter(item => item.id !== id);
+            saveState();
+            renderPrayers();
+        }
+
+        // TEXTAREA AUTOSAVES
+        function saveHomeNote() {
+            state.devocionalNote = document.getElementById('home-devotional-note').value;
+            saveState();
+        }
+        function saveWorkNotes() {
+            state.workNotes = document.getElementById('work-brain-dump').value;
+            saveState();
+        }
+        function saveGratitude() {
+            state.gratitudeNotes = document.getElementById('spiritual-gratitude').value;
+            saveState();
+        }
+
+        // UPDATE OVERALL PROGRESS BAR
+        function updateAllProgressUI() {
+            const totalTasks = state.tasks.length || 1;
+            const completedTasks = state.tasks.filter(t => t.done).length;
+            const taskPerc = (completedTasks / totalTasks) * 100;
+
+            const waterPerc = (state.waterCount / 8) * 100;
+
+            const routine = workoutDatabase[activeWorkoutDay];
+            let doneWorkouts = 0;
+            routine.exercises.forEach((_, idx) => {
+                if (state.workoutChecks[`${activeWorkoutDay}_${idx}`]) doneWorkouts++;
+            });
+            const workoutPerc = (doneWorkouts / routine.exercises.length) * 100;
+
+            const overall = Math.round((taskPerc + waterPerc + workoutPerc) / 3);
+
+            const progressBar = document.getElementById('overall-progress-bar');
+            const progressText = document.getElementById('overall-progress-text');
+
+            if (progressBar) progressBar.style.width = `${overall}%`;
+            if (progressText) progressText.innerText = `${overall}%`;
+        }
+
+        // UTILS
+        function copyVerse() {
+            const verse = document.getElementById('daily-verse-text').innerText;
+            navigator.clipboard.writeText(verse);
+            alert('Versículo copiado com sucesso!');
+        }
+
+        // FAB & MODALS LOGIC
+        function toggleFabMenu() {
+            const modal = document.getElementById('fab-modal');
+            const icon = document.getElementById('fab-icon');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                icon.style.transform = 'rotate(45deg)';
+            } else {
+                closeFabModal();
+            }
+        }
+
+        function closeFabModal(e) {
+            const modal = document.getElementById('fab-modal');
+            const icon = document.getElementById('fab-icon');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            icon.style.transform = 'rotate(0deg)';
+        }
+
+        let modalActionType = null;
+        function openModal(type) {
+            modalActionType = type;
+            const modal = document.getElementById('input-modal');
+            const title = document.getElementById('modal-title');
+            const input = document.getElementById('modal-input');
+
+            input.value = '';
+            if (type === 'task') title.innerText = 'Nova Tarefa de Trabalho';
+            else if (type === 'prayer') title.innerText = 'Novo Pedido de Oração';
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            input.focus();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('input-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        document.getElementById('modal-save-btn').onclick = function() {
+            const val = document.getElementById('modal-input').value.trim();
+            if (!val) return;
+
+            if (modalActionType === 'task') {
+                state.tasks.push({ id: Date.now(), title: val, done: false });
+                renderTasks();
+            } else if (modalActionType === 'prayer') {
+                state.prayers.push({ id: Date.now(), text: val, done: false });
+                renderPrayers();
+            }
+
+            saveState();
+            closeModal();
+        };
+
+        // INITIALIZATION ON PAGE LOAD
+        window.onload = function() {
+            // Set theme
+            if (state.theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                updateThemeIcons(true);
+            }
+
+            // Set current date & greeting
+            const now = new Date();
+            const hours = now.getHours();
+            let greeting = 'Bom dia';
+            if (hours >= 12 && hours < 18) greeting = 'Boa tarde';
+            else if (hours >= 18 || hours < 5) greeting = 'Boa noite';
+
+            document.getElementById('greeting-title').innerText = `${greeting}, Adriana! ✨`;
+            document.getElementById('current-date-badge').innerText = now.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
+
+            // Load text fields
+            document.getElementById('home-devotional-note').value = state.devocionalNote || '';
+            document.getElementById('work-brain-dump').value = state.workNotes || '';
+            document.getElementById('spiritual-gratitude').value = state.gratitudeNotes || '';
+
+            // Set today's workout tab automatically
+            const daysMap = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+            const todayName = daysMap[now.getDay()];
+            setWorkoutDay(workoutDatabase[todayName] ? todayName : 'Segunda');
+
+            // Render all modules
+            renderHabits();
+            renderTasks();
+            renderFinance();
+            renderPrayers();
+
+            // Open Home tab
+            switchTab('home');
+            updateAllProgressUI();
+        };
+    </script>
+</body>
+</html>
