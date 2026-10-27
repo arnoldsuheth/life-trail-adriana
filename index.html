@@ -154,7 +154,68 @@ textarea{font-size:14px!important}
 .trail-mark span{display:inline-block;width:21px;height:21px;border:1px solid #ffffff80;border-radius:50%}
 @media(max-width:600px){.trail-grid{grid-template-columns:1fr}.trail-panel{padding:20px}.trail-dot{width:29px;height:29px}.trail-days{gap:4px}#page-home>div:first-child{padding:24px}main{padding-bottom:25px!important}nav.fixed{padding-bottom:max(8px,env(safe-area-inset-bottom))}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style></head>
+</style>
+<style id="lifetrail-atelier">
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap');
+:root{--trail:#824d68;--trail-soft:#f4e7ed;--trail-gold:#bd946b;--atelier-ink:#493344}
+body{background:radial-gradient(ellipse at 92% 4%,#efd4df90,transparent 40%),radial-gradient(ellipse at 5% 70%,#f4e3ce80,transparent 45%),#faf5f3!important;color:var(--atelier-ink)!important}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.19;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23b59b9b' filter='url(%23n)' opacity='.2' d='M0 0h160v160H0z'/%3E%3C/svg%3E");z-index:-1}
+aside{background:#fffcfaaf!important;backdrop-filter:blur(24px);border-color:#eadce2!important}
+aside>div:first-child>div:first-child{padding-bottom:25px;border-bottom:1px solid #e9dbe2}
+aside h2,main>div h1{background-image:linear-gradient(110deg,#6d3b58,#b57b8d)!important}
+aside>div:first-child>div:first-child>div:first-child,main>div:first-child>div>div:first-child{border-radius:50%!important;background:linear-gradient(135deg,#ae7e91,#74465f)!important;box-shadow:0 5px 15px #87506e25!important;border:3px solid #fff7f5}
+main{padding-top:30px!important}
+#page-home>div:first-child{background:radial-gradient(ellipse at 95% 15%,#b8889c90,transparent 56%),linear-gradient(125deg,#452b43,#77455d 65%,#936577)!important;border:1px solid #ffffff40;border-radius:30px!important;min-height:285px;box-shadow:0 22px 48px #74445c24!important;isolation:isolate}
+#page-home>div:first-child::before,#page-home>div:first-child::after{content:"";position:absolute;pointer-events:none;width:280px;height:370px;border:1px solid #e9cabb35;border-radius:50% 50% 0 0;transform:rotate(32deg);right:-75px;top:0;z-index:0}
+#page-home>div:first-child::after{right:-22px;top:-60px;transform:rotate(47deg);border-color:#e9cabb25}
+#page-home>div:first-child h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:clamp(38px,5vw,57px);line-height:1.05;letter-spacing:-1.3px;margin:17px 0!important}
+#page-home>div:first-child p{max-width:390px;line-height:1.8;font-weight:400;color:#f5e5eb!important}
+.trail-mark{font-size:9px;letter-spacing:3px;color:#efd7c4;gap:10px}
+.trail-mark span{border-radius:50% 50% 0 50%;transform:rotate(-35deg);width:17px;height:23px;border-color:#dbb898}
+#current-date-badge{font-size:9px;letter-spacing:1.4px;background:#ffffff10!important;border:1px solid #ffffff25;padding:7px 12px}
+.trail-panel,.page-content>div:not(:first-child):not(.trail-grid):not(.trail-row),.trail-grid>div{border-color:#eadfe4!important;box-shadow:0 8px 30px #6d3b5810;background:#fffdfbd9;backdrop-filter:blur(16px)}
+.trail-panel{border-radius:26px;padding:25px;color:#493344}
+.trail-grid{gap:22px}
+.trail-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;line-height:1.08;font-weight:600;letter-spacing:-.5px;margin:12px 0}
+.trail-label{color:#9a6c82;font-size:9px;letter-spacing:2px}
+.trail-panel p,.trail-row>span,.trail-moods small,.trail-day{color:#8c7482!important}
+.trail-dot{background:#f8eef1;color:#9c6a80;border-color:#d9b7c6;width:38px;height:38px}
+.trail-day.visited .trail-dot{background:linear-gradient(140deg,#a5758d,#71435f);color:#fff;box-shadow:0 4px 12px #77465f30}
+.trail-day.today .trail-dot{outline-color:#ecd6df}
+.trail-moods{gap:10px;margin:22px 0}
+.trail-moods button{background:linear-gradient(150deg,#fffaf8,#f9f0f4);border-color:#ecdee5;border-radius:18px;color:#9b6881;transition:transform .2s,box-shadow .2s}
+.trail-moods button:hover{transform:translateY(-3px);box-shadow:0 8px 18px #87506e15}
+.trail-moods button[aria-pressed=true]{border:2px solid #9c6882;background:#f1dfe8}
+.trail-btn{border-color:#dfc9d4;background:#fffaf840;color:#80516c;border-radius:14px;transition:transform .2s,box-shadow .2s}
+.trail-btn.primary{background:linear-gradient(110deg,#78465f,#a16e85);border-color:transparent;color:white;box-shadow:0 5px 16px #87506e24}
+.trail-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px #87506e1c}
+button.bg-luxe-rose,button.bg-luxe-gold{background:linear-gradient(120deg,#86516c,#ad7b90)!important}
+.progress-bar-fill{background:linear-gradient(90deg,#8c5b78,#c18d9d,#d7b28e)!important}
+.custom-checkbox{border-color:#b3869d;flex-shrink:0}
+.custom-checkbox:checked{background:#925e7b;border-color:#925e7b}
+.nav-btn.bg-luxe-rose\/10{background:linear-gradient(100deg,#f0dfe9,#f8edf080)!important;box-shadow:inset 3px 0 #a36e88}
+nav.fixed{background:#fffcfae8!important;backdrop-filter:blur(25px);border-color:#e9d9e2!important;padding-top:10px;box-shadow:0 -7px 30px #71435f0a!important}
+input:not([type=checkbox]),textarea,select{border-color:#e8d9e2!important;border-radius:14px!important}
+#trail-toast{background:#74445f;box-shadow:0 8px 35px #74445f30}
+#trail-dialog{background:radial-gradient(ellipse at top right,#f0dce5,transparent 70%),#fffaf7;border-color:#dfc8d5;color:#633c56}
+#trail-clock{font-family:"Cormorant Garamond",Georgia,serif;font-size:80px;font-weight:600;color:#80516c}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline-color:#ba8ca5!important}
+.dark body{background:radial-gradient(ellipse at top right,#57324966,transparent 50%),#211b24!important;color:#f7eaf0!important}
+.dark aside{background:#2a202dcc!important;border-color:#493343!important}
+.dark .trail-panel,.dark .page-content>div:not(:first-child):not(.trail-grid):not(.trail-row),.dark .trail-grid>div{background:#302532ed;color:#f7eaf0;border-color:#50394b!important}
+.dark .trail-label,.dark .trail-panel p,.dark .trail-row>span,.dark .trail-moods small,.dark .trail-day{color:#c3a7b9!important}
+.dark .trail-moods button,.dark .trail-dot{background:#3e2d3b;border-color:#64465b;color:#e3c4d6}
+.dark .trail-moods button[aria-pressed=true]{background:#654254;border-color:#c08ea6}
+.dark .trail-btn{color:#e5c9d9;border-color:#6e4b61;background:#42303c}
+.dark .trail-btn.primary{background:linear-gradient(110deg,#875470,#ab7c91);color:#fff}
+.dark nav.fixed{background:#2a202df2!important;border-color:#50394b!important}
+.dark .nav-btn.bg-luxe-rose\/10{background:#543547!important}
+.dark #trail-dialog{background:#302532;color:#f8eaf0;border-color:#755268}
+.dark #trail-clock{color:#e0b8cd}
+@media(min-width:768px){aside{width:245px!important}.page-content{padding-bottom:25px}#page-home>div:first-child{padding:35px 38px!important}.trail-panel:hover{box-shadow:0 12px 32px #74445c16}}
+@media(max-width:600px){main{padding-top:16px!important}#page-home>div:first-child{padding:27px 24px!important;min-height:265px;border-radius:26px!important}#page-home>div:first-child h1{font-size:42px;max-width:280px}.trail-title{font-size:28px}.trail-panel{padding:22px}.trail-grid{gap:18px}.trail-dot{width:30px;height:30px}.trail-days{gap:4px}.trail-moods button{padding:14px 4px}#trail-dialog{padding:23px}nav.fixed span{font-size:9px}}
+</style>
+</head>
 <body class="bg-luxe-bg dark:bg-luxe-darkBg text-luxe-text dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row">
 
     <!-- DESKTOP SIDEBAR -->
@@ -1119,10 +1180,10 @@ window.onload=function(){
  document.title='LIFE TRAIL | Adriana Feu';
  const home=document.getElementById('page-home'),banner=home.firstElementChild;
  const mark=document.createElement('div');mark.className='trail-mark';mark.innerHTML='<span aria-hidden="true"></span>LIFE TRAIL / SUA JORNADA';banner.firstElementChild.prepend(mark);
- banner.querySelector('p').textContent='Faça espaço para o que importa. Seu trabalho, seu cuidado e sua fé, um passo de cada vez.';
+ banner.querySelector('p').textContent='Sua vida floresce nos pequenos passos. Cultive seu trabalho, seu cuidado e sua fé.';
  document.querySelectorAll('aside p,main>div span').forEach(el=>{if(el.textContent.includes('Painel Pessoal'))el.textContent='LIFE TRAIL • sua jornada'});
  const panel=document.createElement('div');panel.className='trail-grid';
- panel.innerHTML='<div class="trail-panel"><div class="trail-row"><div><div class="trail-label">Sua constância tem valor</div><h2 class="trail-title">Uma semana de pequenos passos.</h2></div><span aria-hidden="true" style="font-size:28px">↗</span></div><div id="trail-days" class="trail-days" aria-label="Histórico da semana"></div><p style="font-size:11px;color:#718274;margin-top:16px">Cada visita é um recomeço. Os percentuais mostram o progresso registrado em cada dia.</p></div><div class="trail-panel"><div class="trail-label">Um minuto para você</div><h2 class="trail-title">Como você está hoje?</h2><div class="trail-moods">'+[['cansada','☁','Cansada'],['tranquila','◡','Tranquila'],['animada','☀','Animada']].map(m=>'<button type="button" data-mood="'+m[0]+'" aria-pressed="false" onclick="setTrailMood(\''+m[0]+'\')">'+m[1]+'<small>'+m[2]+'</small></button>').join('')+'</div><button class="trail-btn" onclick="showTrailSummary()">Ver meu dia até aqui ↗</button></div>';
+ panel.innerHTML='<div class="trail-panel"><div class="trail-row"><div><div class="trail-label">Sua constância tem valor</div><h2 class="trail-title">Seu tempo. Seu ritmo. Sua jornada.</h2></div><span aria-hidden="true" style="font-size:28px">↗</span></div><div id="trail-days" class="trail-days" aria-label="Histórico da semana"></div><p style="font-size:11px;color:#718274;margin-top:16px">Cada visita é um recomeço. Os percentuais mostram o progresso registrado em cada dia.</p></div><div class="trail-panel"><div class="trail-label">Uma pausa para sentir</div><h2 class="trail-title">Como você está hoje?</h2><div class="trail-moods">'+[['cansada','☁','Cansada'],['tranquila','◡','Tranquila'],['animada','☀','Animada']].map(m=>'<button type="button" data-mood="'+m[0]+'" aria-pressed="false" onclick="setTrailMood(\''+m[0]+'\')">'+m[1]+'<small>'+m[2]+'</small></button>').join('')+'</div><button class="trail-btn" onclick="showTrailSummary()">Ver meu dia até aqui ↗</button></div>';
  banner.after(panel);
  const focus=document.createElement('div');focus.className='trail-panel';
  focus.innerHTML='<div class="trail-row" style="flex-wrap:wrap"><div><div class="trail-label">Seu próximo passo</div><h2 class="trail-title" id="trail-next"></h2><p style="font-size:12px;color:#718274">Uma coisa por vez também é progresso.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="trail-btn primary" onclick="openTrailFocus()">Focar por 25 minutos</button><button class="trail-btn" onclick="switchTab(\'trabalho\')">Organizar meu dia</button></div></div>';
