@@ -225,4 +225,26 @@ document.querySelectorAll('.themes').forEach(x=>x.remove());
 document.body.dataset.theme='rose';
 document.querySelectorAll('.bottom').forEach(x=>{const a=x.querySelector('a');if(a){a.href='previa-gestao.html';a.textContent='Voltar à minha rotina';}});
 });
+</script><script id="management-comparisons">
+(()=>{
+const originalRender=render;
+function comparison(){
+ const boundsNow=bounds(),current=date(boundsNow.a),end=date(boundsNow.b);let priorStart,priorEnd;
+ if(boundsNow.p==='month'){priorStart=new Date(current.getFullYear(),current.getMonth()-1,1,12);priorEnd=new Date(current.getFullYear(),current.getMonth(),0,12)}
+ else{const length=Math.round((end-current)/86400000)+1;priorEnd=new Date(current);priorEnd.setDate(priorEnd.getDate()-1);priorStart=new Date(current);priorStart.setDate(priorStart.getDate()-length);}
+ const selected=$('sellerFilter').value;
+ const select=(a,b)=>db.rows.filter(r=>r.date>=a&&r.date<=b&&(!selected||r.seller===selected));
+ const nowRows=select(boundsNow.a,boundsNow.b),previousRows=select(iso(priorStart),iso(priorEnd)),a=sum(nowRows),b=sum(previousRows);
+ let panel=$('management-comparison');if(!panel){panel=document.createElement('article');panel.id='management-comparison';panel.className='card';panel.style.marginTop='18px';$('painel').append(panel)}
+ const change=(x,y)=>!previousRows.length?'Sem registros no período anterior':y===0?(x===0?'Sem variação':'Sem base para variação percentual'):num((x-y)/y*100)+'% em relação ao período anterior';
+ panel.innerHTML='<div class="kicker">Evolução da sua gestão</div><h2>Seu progresso tem história.</h2><p class="muted">Comparação de '+boundsNow.a.split('-').reverse().join('/')+' a '+boundsNow.b.split('-').reverse().join('/')+' com '+iso(priorStart).split('-').reverse().join('/')+' a '+iso(priorEnd).split('-').reverse().join('/')+'.</p><div class="grid"><div><h3>Valor vendido</h3><b>'+money(a.revenue)+'</b><p class="muted">'+change(a.revenue,b.revenue)+'</p></div><div><h3>Atendimentos com venda</h3><b>'+a.tickets+'</b><p class="muted">'+change(a.tickets,b.tickets)+'</p></div><div><h3>PA</h3><b>'+(a.tickets?num(a.pieces/a.tickets):'—')+'</b><p class="muted">Anterior: '+(b.tickets?num(b.pieces/b.tickets):'sem registros')+'</p></div><div><h3>VVPA</h3><b>'+(a.tickets?money(a.revenue/a.tickets):'—')+'</b><p class="muted">Anterior: '+(b.tickets?money(b.revenue/b.tickets):'sem registros')+'</p></div></div><small>Períodos sem lançamentos não são tratados como queda de desempenho. A comparação usa todo o período selecionado; meses têm durações diferentes.</small>';
+}
+render=function(){originalRender();comparison();};
+['reference','period','sellerFilter'].forEach(id=>$(id).onchange=render);
+const settings=$('goalsForm'),label=document.createElement('label');label.style.marginTop='18px';label.innerHTML='Início da sua atuação na gerência<input id="management-start" type="date"><small>Opcional. Registre a data real para contextualizar seu histórico.</small>';settings.prepend(label);$('management-start').value=db.managementStart||'';
+$('management-start').onchange=()=>{db.managementStart=$('management-start').value;persist();showTenure()};
+const tenure=document.createElement('p');tenure.id='management-tenure';tenure.className='notice';document.querySelector('.hero').append(tenure);
+function showTenure(){if(!db.managementStart){tenure.textContent='Seu histórico profissional começa com cada resultado registrado. Defina o início da sua atuação em Metas.';return;}const start=date(db.managementStart),now=date(today),days=Math.floor((now-start)/86400000);tenure.textContent=days>=0?'Sua gestão desde '+start.toLocaleDateString('pt-BR')+' · '+days+' dias de trajetória.':'Início da sua gestão previsto para '+start.toLocaleDateString('pt-BR')+'.';}
+showTenure();render();
+})();
 </script></body></html>
