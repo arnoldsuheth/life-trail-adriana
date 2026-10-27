@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Pessoal | Adriana</title>
+    <title>LIFE TRAIL | Adriana Feu</title>
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome 6 CDN -->
@@ -113,7 +113,48 @@
             transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
-</head>
+
+<style id="lifetrail-design">
+:root{--trail:#285447;--trail-soft:#e8f0e9;--trail-gold:#b58c52}
+body{background:#f7f6f2!important}
+.dark body{background:#111c19!important}
+aside{background:#fcfcf8!important;border-color:#e2e8df!important}
+.dark aside{background:#17251f!important}
+main{max-width:1280px!important}
+#page-home>div:first-child{background:radial-gradient(ellipse at 90% 0%,#53755b,transparent 65%),#234b3e!important;min-height:225px;box-shadow:0 18px 50px #254e3f20}
+#page-home>div:first-child h1{font-size:clamp(27px,4vw,42px);letter-spacing:-1.4px}
+.page-content>div{transition:box-shadow .25s,transform .25s}
+button,input,select{min-height:44px}
+button{touch-action:manipulation}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #b58c52!important;outline-offset:3px}
+textarea{font-size:14px!important}
+.trail-panel{background:#fff;border:1px solid #e3e8df;border-radius:24px;padding:24px;color:#263c32}
+.dark .trail-panel{background:#1a2a23;border-color:#35493d;color:#ecf2e9}
+.trail-label{font-size:10px;letter-spacing:2px;font-weight:800;text-transform:uppercase;color:#718274}
+.trail-title{font-size:22px;font-weight:800;letter-spacing:-.7px;margin:8px 0}
+.trail-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.trail-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.trail-btn{border:1px solid #cfdbcd;border-radius:13px;padding:10px 15px;font-size:12px;font-weight:700;color:inherit;background:transparent}
+.trail-btn.primary{background:#285447;color:white;border-color:#285447}
+.trail-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:22px}
+.trail-day{text-align:center;font-size:10px;color:#718274}
+.trail-dot{display:flex;align-items:center;justify-content:center;width:38px;height:38px;margin:0 auto 9px;border:1px dashed #a7bba7;border-radius:50%;font-size:11px;color:#52755b;background:#f2f6ef}
+.trail-day.today .trail-dot{outline:3px solid #c5d4bc;outline-offset:3px}
+.trail-day.visited .trail-dot{background:#285447;color:white;border:none}
+.dark .trail-dot{background:#233a2c;color:#daebcf}
+.trail-moods{display:flex;gap:8px;margin:18px 0}
+.trail-moods button{flex:1;border-radius:14px;border:1px solid #dce5d7;padding:10px 4px;font-size:21px}
+.trail-moods button[aria-pressed=true]{background:#e3ecdb;border:2px solid #285447}
+.trail-moods small{display:block;font-size:9px;margin-top:5px;color:#64745f}
+#trail-toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);max-width:90vw;background:#234b3e;color:white;border-radius:14px;padding:13px 22px;z-index:100;font-size:13px;box-shadow:0 10px 40px #0002}
+#trail-dialog{border:1px solid #dde5d8;border-radius:26px;padding:28px;width:min(430px,92vw);background:#fafbf7;color:#263c32}
+#trail-dialog::backdrop{background:#10231bc0;backdrop-filter:blur(7px)}
+#trail-clock{text-align:center;font-size:64px;font-variant-numeric:tabular-nums;font-weight:800;letter-spacing:-3px;margin:20px 0}
+.trail-mark{display:inline-flex;gap:8px;align-items:center;font-size:10px;letter-spacing:3px;font-weight:800;margin-bottom:14px}
+.trail-mark span{display:inline-block;width:21px;height:21px;border:1px solid #ffffff80;border-radius:50%}
+@media(max-width:600px){.trail-grid{grid-template-columns:1fr}.trail-panel{padding:20px}.trail-dot{width:29px;height:29px}.trail-days{gap:4px}#page-home>div:first-child{padding:24px}main{padding-bottom:25px!important}nav.fixed{padding-bottom:max(8px,env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style></head>
 <body class="bg-luxe-bg dark:bg-luxe-darkBg text-luxe-text dark:text-gray-100 font-sans transition-colors duration-300 min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row">
 
     <!-- DESKTOP SIDEBAR -->
@@ -437,7 +478,7 @@
                         <div class="grid grid-cols-2 gap-2">
                             <div>
                                 <label class="block text-[11px] font-bold text-luxe-muted uppercase mb-1">Valor (R$)</label>
-                                <input type="number" step="0.01" id="fin-amount" placeholder="0.00" required class="w-full p-2.5 rounded-xl text-xs bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-luxe-rose">
+                                <input type="number" min="0.01" step="0.01" id="fin-amount" placeholder="0.00" required class="w-full p-2.5 rounded-xl text-xs bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder focus:outline-none focus:ring-1 focus:ring-luxe-rose">
                             </div>
                             <div>
                                 <label class="block text-[11px] font-bold text-luxe-muted uppercase mb-1">Tipo</label>
@@ -572,10 +613,7 @@
                 { id: 3, title: 'Planejar cronograma de conteúdos', done: false }
             ],
             workoutChecks: {},
-            transactions: [
-                { id: 1, desc: 'Consultoria / Serviço', amount: 2500, type: 'income', date: 'Hoje' },
-                { id: 2, desc: 'Supermercado Mensal', amount: 450, type: 'expense', date: 'Hoje' }
-            ],
+            transactions: [],
             prayers: [
                 { id: 1, text: 'Pela saúde e sabedoria da minha família', done: false },
                 { id: 2, text: 'Clareza e paz nos novos projetos profissionais', done: false }
@@ -584,7 +622,7 @@
         };
 
         // Load data or initialize default
-        let state = JSON.parse(localStorage.getItem('adriana_dashboard_data')) || defaultState;
+        let state; try { state = JSON.parse(localStorage.getItem('adriana_dashboard_data')) || structuredClone(defaultState); } catch(e) { state = structuredClone(defaultState); }
 
         function saveState() {
             localStorage.setItem('adriana_dashboard_data', JSON.stringify(state));
@@ -681,7 +719,7 @@
             const container = document.getElementById('habits-list');
             container.innerHTML = state.habits.map(h => `
                 <div class="flex items-center justify-between p-3 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder">
-                    <span class="text-xs font-semibold ${h.done ? 'line-through text-luxe-muted' : ''}">${h.title}</span>
+                    <span class="text-xs font-semibold ${h.done ? 'line-through text-luxe-muted' : ''}">${safeText(h.title)}</span>
                     <input type="checkbox" ${h.done ? 'checked' : ''} onchange="toggleHabit(${h.id})" class="custom-checkbox">
                 </div>
             `).join('');
@@ -704,7 +742,7 @@
             }
             container.innerHTML = state.tasks.map(t => `
                 <div class="flex items-center justify-between p-3.5 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder">
-                    <span class="text-xs md:text-sm font-medium ${t.done ? 'line-through text-luxe-muted' : ''}">${t.title}</span>
+                    <span class="text-xs md:text-sm font-medium ${t.done ? 'line-through text-luxe-muted' : ''}">${safeText(t.title)}</span>
                     <div class="flex items-center gap-2">
                         <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTask(${t.id})" class="custom-checkbox">
                         <button onclick="deleteTask(${t.id})" class="text-xs text-luxe-muted hover:text-rose-500 ml-1"><i class="fa-regular fa-trash-can"></i></button>
@@ -783,7 +821,7 @@
             const amount = parseFloat(document.getElementById('fin-amount').value);
             const type = document.getElementById('fin-type').value;
 
-            if (!desc || isNaN(amount)) return;
+            if (!desc.trim() || !Number.isFinite(amount) || amount <= 0) return;
 
             state.transactions.unshift({
                 id: Date.now(),
@@ -835,7 +873,7 @@
                             <i class="fa-solid ${t.type === 'income' ? 'fa-arrow-down' : 'fa-arrow-up'}"></i>
                         </div>
                         <div>
-                            <span class="text-xs font-bold block">${t.desc}</span>
+                            <span class="text-xs font-bold block">${safeText(t.desc)}</span>
                             <span class="text-[10px] text-luxe-muted">${t.date}</span>
                         </div>
                     </div>
@@ -858,7 +896,7 @@
             }
             container.innerHTML = state.prayers.map(p => `
                 <div class="flex items-center justify-between p-3.5 rounded-xl bg-luxe-bg dark:bg-luxe-darkBg border border-luxe-border dark:border-luxe-darkBorder">
-                    <span class="text-xs md:text-sm font-medium ${p.done ? 'line-through text-luxe-muted' : ''}">${p.text}</span>
+                    <span class="text-xs md:text-sm font-medium ${p.done ? 'line-through text-luxe-muted' : ''}">${safeText(p.text)}</span>
                     <div class="flex items-center gap-2">
                         <input type="checkbox" ${p.done ? 'checked' : ''} onchange="togglePrayer(${p.id})" class="custom-checkbox">
                         <button onclick="deletePrayer(${p.id})" class="text-xs text-luxe-muted hover:text-rose-500 ml-1"><i class="fa-regular fa-trash-can"></i></button>
@@ -1023,5 +1061,79 @@
             updateAllProgressUI();
         };
     </script>
-</body>
+
+<script id="lifetrail-enhancements">
+// LIFE TRAIL: local daily history. No external data transmission.
+const trailKey='lifetrail_adriana_v2';
+const localDay=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+let trail;
+try{trail=JSON.parse(localStorage.getItem(trailKey))||{days:{},day:localDay()}}catch(e){trail={days:{},day:localDay()}}
+trail.days=trail.days||{};
+const safeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let toastTimer,focusTimer,remaining=25*60,focusRunning=false;
+function trailToast(message){let el=document.getElementById('trail-toast');el.textContent=message;el.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.hidden=true,3200)}
+function trailWrite(){try{localStorage.setItem(trailKey,JSON.stringify(trail))}catch(e){trailToast('Não foi possível salvar. Exporte uma cópia dos dados.')}}
+function trailRollover(){
+ const today=localDay();
+ if(trail.day!==today){
+  state.waterCount=0;state.habits.forEach(h=>h.done=false);state.workoutChecks={};
+  state.devocionalNote='';trail.day=today;
+  document.getElementById('home-devotional-note').value='';
+  renderHabits();renderWorkoutExercises();
+ }
+ if(!trail.days[today])trail.days[today]={mood:null,progress:0,note:''};
+}
+const originalSaveState=saveState;
+saveState=function(){trailRollover();try{originalSaveState();const day=trail.days[localDay()];day.progress=parseInt(document.getElementById('overall-progress-text').textContent)||0;day.note=state.devocionalNote;trailWrite();renderTrail()}catch(e){trailToast('Não foi possível salvar no navegador. Faça uma cópia dos dados.')}};
+function setTrailMood(mood){trail.days[localDay()].mood=mood;trailWrite();renderTrail();trailToast('Seu momento foi registrado. Um passo de cada vez.')}
+function renderTrail(){
+ const holder=document.getElementById('trail-days');if(!holder)return;
+ const now=new Date();const monday=new Date(now.getFullYear(),now.getMonth(),now.getDate()-((now.getDay()+6)%7));
+ holder.replaceChildren();
+ ['S','T','Q','Q','S','S','D'].forEach((label,i)=>{
+  const date=new Date(monday);date.setDate(monday.getDate()+i);
+  const key=date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0')+'-'+String(date.getDate()).padStart(2,'0');
+  const entry=trail.days[key],el=document.createElement('div');
+  el.className='trail-day'+(entry?' visited':'')+(key===localDay()?' today':'');
+  el.innerHTML='<span class="trail-dot">'+(entry?entry.progress+'%':date.getDate())+'</span>'+label;
+  el.title=date.toLocaleDateString('pt-BR')+(entry?' • progresso registrado':' • sem registro');
+  holder.append(el);
+ });
+ document.querySelectorAll('[data-mood]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mood===trail.days[localDay()].mood)));
+ const next=state.tasks.find(t=>!t.done);
+ document.getElementById('trail-next').textContent=next?next.title:'Escolha uma pequena conquista para hoje.';
+}
+function trailClock(){document.getElementById('trail-clock').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');document.getElementById('trail-focus-toggle').textContent=focusRunning?'Pausar':'Começar'}
+function openTrailFocus(){document.getElementById('trail-focus-task').textContent=state.tasks.find(t=>!t.done)?.title||'Dedique este momento à sua prioridade.';document.getElementById('trail-dialog').showModal();trailClock()}
+function toggleTrailFocus(){if(focusRunning){clearInterval(focusTimer);focusRunning=false}else{if(remaining===0)remaining=25*60;focusRunning=true;const deadline=Date.now()+remaining*1000;focusTimer=setInterval(()=>{remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));if(!remaining){clearInterval(focusTimer);focusRunning=false;trailToast('Seu momento de foco terminou. Faça uma pausa.')}trailClock()},250)}trailClock()}
+function resetTrailFocus(){clearInterval(focusTimer);focusRunning=false;remaining=25*60;trailClock()}
+function exportTrail(){
+ const payload={app:'LIFE TRAIL',version:2,exportedAt:new Date().toISOString(),dashboard:state,journey:trail};
+ const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='lifetrail-adriana-'+localDay()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);trailToast('Cópia dos dados exportada.');
+}
+function showTrailSummary(){const today=trail.days[localDay()];trailToast('Hoje: '+state.tasks.filter(t=>t.done).length+' tarefas concluídas, '+state.waterCount+' copos de água e '+today.progress+'% de progresso.')}
+const originalOnload=window.onload;
+window.onload=function(){
+ originalOnload();
+ document.title='LIFE TRAIL | Adriana Feu';
+ const home=document.getElementById('page-home'),banner=home.firstElementChild;
+ const mark=document.createElement('div');mark.className='trail-mark';mark.innerHTML='<span aria-hidden="true"></span>LIFE TRAIL / SUA JORNADA';banner.firstElementChild.prepend(mark);
+ banner.querySelector('p').textContent='Faça espaço para o que importa. Seu trabalho, seu cuidado e sua fé, um passo de cada vez.';
+ document.querySelectorAll('aside p,main>div span').forEach(el=>{if(el.textContent.includes('Painel Pessoal'))el.textContent='LIFE TRAIL • sua jornada'});
+ const panel=document.createElement('div');panel.className='trail-grid';
+ panel.innerHTML='<div class="trail-panel"><div class="trail-row"><div><div class="trail-label">Sua constância tem valor</div><h2 class="trail-title">Uma semana de pequenos passos.</h2></div><span aria-hidden="true" style="font-size:28px">↗</span></div><div id="trail-days" class="trail-days" aria-label="Histórico da semana"></div><p style="font-size:11px;color:#718274;margin-top:16px">Cada visita é um recomeço. Os percentuais mostram o progresso registrado em cada dia.</p></div><div class="trail-panel"><div class="trail-label">Um minuto para você</div><h2 class="trail-title">Como você está hoje?</h2><div class="trail-moods">'+[['cansada','☁','Cansada'],['tranquila','◡','Tranquila'],['animada','☀','Animada']].map(m=>'<button type="button" data-mood="'+m[0]+'" aria-pressed="false" onclick="setTrailMood(\''+m[0]+'\')">'+m[1]+'<small>'+m[2]+'</small></button>').join('')+'</div><button class="trail-btn" onclick="showTrailSummary()">Ver meu dia até aqui ↗</button></div>';
+ banner.after(panel);
+ const focus=document.createElement('div');focus.className='trail-panel';
+ focus.innerHTML='<div class="trail-row" style="flex-wrap:wrap"><div><div class="trail-label">Seu próximo passo</div><h2 class="trail-title" id="trail-next"></h2><p style="font-size:12px;color:#718274">Uma coisa por vez também é progresso.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="trail-btn primary" onclick="openTrailFocus()">Focar por 25 minutos</button><button class="trail-btn" onclick="switchTab(\'trabalho\')">Organizar meu dia</button></div></div>';
+ panel.after(focus);
+ const footer=document.createElement('div');footer.className='trail-row';footer.style.cssText='flex-wrap:wrap;font-size:11px;color:#718274;padding:10px 4px';
+ footer.innerHTML='<span>LIFE TRAIL · Feito para a sua jornada<br>Dados salvos neste navegador. Sem sincronização entre aparelhos.</span><button class="trail-btn" onclick="exportTrail()">Exportar meus dados ↓</button>';home.append(footer);
+ document.body.insertAdjacentHTML('beforeend','<div id="trail-toast" role="status" aria-live="polite" hidden></div><dialog id="trail-dialog" aria-labelledby="trail-focus-title"><div class="trail-row"><span class="trail-label">Seu momento de presença</span><button class="trail-btn" onclick="document.getElementById(\'trail-dialog\').close()" aria-label="Fechar foco">×</button></div><h2 class="trail-title" id="trail-focus-title">Respire. Comece pelo possível.</h2><p id="trail-focus-task" style="font-size:13px"></p><div id="trail-clock">25:00</div><div class="trail-row"><button id="trail-focus-toggle" class="trail-btn primary" onclick="toggleTrailFocus()">Começar</button><button class="trail-btn" onclick="resetTrailFocus()">Reiniciar</button></div><p style="font-size:11px;margin-top:16px;color:#718274">Você pode fechar esta janela e continuar navegando. O contador permanece ativo enquanto a página estiver aberta.</p></dialog>');
+ document.querySelectorAll('button').forEach(b=>{if(!b.textContent.trim()&&!b.getAttribute('aria-label'))b.setAttribute('aria-label',b.getAttribute('onclick')?.includes('delete')?'Excluir registro':'Ação do painel')});
+ document.querySelectorAll('input[type=checkbox]').forEach(c=>c.setAttribute('aria-label',c.parentElement.textContent.trim()||'Concluir atividade'));
+ trailRollover();saveState();renderTrail();
+ setInterval(()=>{if(trail.day!==localDay()){trailRollover();saveState();renderTrail()}},30000);
+};
+</script></body>
 </html>
